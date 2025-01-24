@@ -2,7 +2,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class UserInterface {
-  public static void userInterface() {
+  public static void userInterface(String[] args) {
     Scanner scn = new Scanner(System.in);
     String input = "";
     while(!Objects.equals(input, "exit")){
