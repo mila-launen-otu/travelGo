@@ -16,7 +16,8 @@ Originally, we had a Hashmap keeping track of all the details defined as: **<Str
 - this is where we actually do all the operations to the variables (edit etc)
 ##### _database.csv_
 - This is where we keep record of all the actual travel packages, even after running the program
-
+####ALSO####
+- I looked through some of the code and I think to make it fully backend we just have to use the code structure from UserInterface.java, and apply it to MainProg.java, So I'll do that.
 ### TL;DR
 - new formatting of the system. the HashMap keeping all the info is formatted as:
 <String, Travelpackage>
