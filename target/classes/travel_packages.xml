@@ -1,0 +1,14 @@
+<TravelPackages>
+  <TravelPackage>
+    <name>Jamaica All Inclusive</name>
+    <description>An Amazing island getaway!</description>
+    <stock>5</stock>
+    <price>499.99</price>
+  </TravelPackage>
+  <TravelPackage>
+    <name>Japan Cherry Blossoms</name>
+    <description>Explore Japan in cherry blossom season!</description>
+    <stock>10</stock>
+    <price>1500.99</price>
+  </TravelPackage>
+</TravelPackages>
