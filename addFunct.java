@@ -9,46 +9,67 @@ public class addFunct {
             return true;
         }
     }
-    public static String[] add(){
-        boolean input = true;
-        boolean input2 = true;
-        String name;
-        String desc;
+    public static boolean isValidFloat(String f){
+        try {
+            Float.parseFloat(f); // Try converting to float
+            return true; // It's a float
+        } catch (NumberFormatException e) {
+            return false; // Not a float
+        }
+    }
+    public static boolean isValidInt(String f){
+        try {
+            Integer.parseInt(f); // Try converting to float
+            return true; // It's a float
+        } catch (NumberFormatException e) {
+            return false; // Not a float
+        }
+    }
 
-        while(input){
-            Scanner myObj = new Scanner(System.in);
-            System.out.println("Enter the name:");
-            name = myObj.nextLine();
-
-            if(isValid(name)){
-                System.out.println("The valid name you chose was:" + name);
-                System.out.println("you can now write a description.");
-                input = false;
+    public static MainProg.TravelPackage add(){
+        //{0:Title 1:price 2:stock 3:description}
+        MainProg.TravelPackage newPackage = new MainProg.TravelPackage();
+        Scanner myObj = new Scanner(System.in);
+        for(int i = 0; i < 4; i ++){
+            if(i == 1){
+                //scans for floats
+                System.out.println("Enter Price:");
+                String price =myObj.nextLine();
+                if(!isValid(price) || !isValidFloat(price)){
+                    System.out.println("Empty:" + isValid(price) + "Valid Float: " + isValidFloat(price));
+                    System.out.println(Float.parseFloat(price));
+                    System.out.println("Enter valid price");
+                    i --;
+                }
+                else{
+                    newPackage.price = Float.parseFloat(price);
+                }
+            }
+            else if(i == 2){
+                System.out.println("Enter Stock:");
+                String stock = myObj.nextLine();
+                if(!isValidInt(stock) || !isValid(stock)){
+                    System.out.println("Enter valid stock");
+                    i--;
+                }
+                else{
+                    newPackage.stock = Integer.parseInt(stock);
+                }
+            }
+            else if(i == 3){
+                System.out.println("Enter Desc:");
+                String desc = myObj.nextLine();
+                newPackage.description = desc;
             }
             else{
-                System.out.println("ERROR: your name is not valid");
+                System.out.println("Enter Title:");
+                String title = myObj.nextLine();
+                newPackage.name = title;
             }
+
         }
-
-        while(input2){
-            Scanner myObj = new Scanner(System.in);
-            System.out.println("Enter the description:");
-            desc = myObj.nextLine();
-
-            if(isValid(desc)){
-                System.out.println("The valid description you chose was:" + desc);
-                System.out.println("you can now exit adding a name + description.");
-                input2 = false;
-            }
-            else{
-                System.out.println("ERROR: your description is not valid");
-            }
-        }
-
-        String[] val = new String[2];
-        val[0] = name;
-        val[1] = desc;
-        return val;
+        System.out.println(newPackage.toString());
+        return newPackage;
 
     }
 }
