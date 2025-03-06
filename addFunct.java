@@ -46,8 +46,8 @@ public class addFunct {
         }
 
         String[] val = new String[2];
-        val[0] = name;
-        val[1] = desc;
+//        val[0] = name;
+//        val[1] = desc;
         return val;
 
     }
