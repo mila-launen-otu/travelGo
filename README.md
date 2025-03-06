@@ -12,7 +12,7 @@ Why is that you ask?
 Originally, we had a Hashmap keeping track of all the details defined as: **<String, String>**
 - however this sucks bc we have to keep on changing the price and stock to floats/ints
 - so, now we have 2 things that keep track of all the travel packages:
-_public static HashMap<String, TravelPackage> travelPackages = new HashMap<>();_
+##### _public static HashMap<String, TravelPackage> travelPackages = new HashMap<>();_
 - this is where we actually do all the operations to the variables (edit etc)
 ##### _database.csv_
 - This is where we keep record of all the actual travel packages, even after running the program
