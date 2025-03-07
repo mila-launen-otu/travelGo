@@ -1,25 +1,34 @@
 package com.example.exp.travelgogui.backend;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+@JacksonXmlRootElement(localName = "TravelPackage")
 public class TravelPackage {
-    public String name;
-    public String description;
-    public int stock;
-    public double price;
-    //Default Constructor for Jackson do not use or make private
-    public TravelPackage(){
-    }
-    //constructor you're supposed to use
+    private String name;
+    private String description;
+    private int stock;
+    private double price;
+
+    // Constructors
+    public TravelPackage() {}
+
     public TravelPackage(String name, String description, int stock, double price) {
         this.name = name;
         this.description = description;
         this.stock = stock;
         this.price = price;
     }
-    @Override
-    public String toString() {
-        return "Name: " + name + ", Description: " + description + ", Stock: " + stock + ", Price: $" + price;
-    }
+
+    // Getters and Setters
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public int getStock() { return stock; }
+    public void setStock(int stock) { this.stock = stock; }
+
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
 }

@@ -4,15 +4,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
 
 public class TravelDatabase {
     private static final String FILE_PATH = "travel_packages.xml";
-    private XmlMapper xmlMapper;
+    private final XmlMapper xmlMapper;
 
     public TravelDatabase() {
         xmlMapper = new XmlMapper();

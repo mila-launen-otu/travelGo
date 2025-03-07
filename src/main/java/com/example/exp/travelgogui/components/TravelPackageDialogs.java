@@ -16,7 +16,7 @@ public class TravelPackageDialogs {
         StringProperty descriptionProperty = new SimpleStringProperty("");
         IntegerProperty stockProperty = new SimpleIntegerProperty();
         DoubleProperty priceProperty = new SimpleDoubleProperty();
-        Dialog<TravelPackage> dialog = new Dialog<TravelPackage>();
+        Dialog<TravelPackage> dialog = new Dialog<>();
         dialog.setTitle("Add Travel Package");
         DialogPane dialogPane = new DialogPane();
         Form form = Form.of(
@@ -52,13 +52,13 @@ public class TravelPackageDialogs {
         return dialog;
     }
     static public Dialog<TravelPackage> UpdateTravelPackageDialog(TravelPackage travelPackage){
-        Dialog<TravelPackage> dialog = new Dialog<TravelPackage>();
+        Dialog<TravelPackage> dialog = new Dialog<>();
         dialog.setTitle("Update Travel Package");
         DialogPane dialogPane = new DialogPane();
-        StringProperty nameProperty = new SimpleStringProperty(travelPackage.name);
-        StringProperty descriptionProperty = new SimpleStringProperty(travelPackage.description);
-        IntegerProperty stockProperty = new SimpleIntegerProperty(travelPackage.stock);
-        DoubleProperty priceProperty = new SimpleDoubleProperty(travelPackage.price);
+        StringProperty nameProperty = new SimpleStringProperty(travelPackage.getName());
+        StringProperty descriptionProperty = new SimpleStringProperty(travelPackage.getDescription());
+        IntegerProperty stockProperty = new SimpleIntegerProperty(travelPackage.getStock());
+        DoubleProperty priceProperty = new SimpleDoubleProperty(travelPackage.getPrice());
 
         Form form = Form.of(
                 Group.of(

@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 
 public class TravelDatabaseModel {
 
-    private final ListProperty<TravelPackage> travelPackageList = new SimpleListProperty<TravelPackage>();
+    private final ListProperty<TravelPackage> travelPackageList = new SimpleListProperty<>();
 
     public ObservableList<TravelPackage> getTravelPackageList(){
         return travelPackageList.get();
@@ -25,9 +25,4 @@ public class TravelDatabaseModel {
     }
 
     public final void setSelectedItemProperty(Integer value){selectedItem.set(value);}
-
-    public final StringProperty nameProperty = new SimpleStringProperty();
-    public final StringProperty descriptionProperty = new SimpleStringProperty();
-    public final IntegerProperty stockProperty = new SimpleIntegerProperty();
-    public final DoubleProperty priceProperty = new SimpleDoubleProperty();
 }

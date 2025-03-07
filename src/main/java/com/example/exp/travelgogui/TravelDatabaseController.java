@@ -4,7 +4,7 @@ import javafx.scene.layout.Region;
 import javafx.util.Builder;
 
 public class TravelDatabaseController {
-    private Builder<Region> viewBuilder;
+    private final Builder<Region> viewBuilder;
     private TravelDatabaseInteractor interactor;
 
     public TravelDatabaseController() {

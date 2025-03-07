@@ -9,14 +9,14 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 
 public class TravelDatabaseInteractor {
-    private TravelDatabaseModel model;
+    private final TravelDatabaseModel model;
     private final TravelDatabase database = new TravelDatabase();
     public TravelDatabaseInteractor(TravelDatabaseModel model) {
         this.model = model;
         loadTravelPackagesFromDB();
     }
     public void loadTravelPackagesFromDB() {
-        ObservableList<TravelPackage> list1 = null;
+        ObservableList<TravelPackage> list1;
         try {
             list1 = FXCollections.observableArrayList(database.loadPackages().getPackages());
         } catch (IOException e) {
