@@ -1,55 +1,55 @@
-# Rubicon Systems - Travel Package Management
+# **Rubicon Systems - Travel Package Management**
 
-## Project Overview
-Rubicon Systems is a **travel package management system** designed to help administrators **organize, track, and modify travel packages efficiently**.
+## **Project Overview**
+Rubicon Systems is a **Travel Package Management System** designed to help administrators **organize, track, and modify travel packages efficiently**. The platform ensures seamless management of travel offerings, including inventory and pricing adjustments.
 
-### Key Features
-- Add, edit, or delete travel packages (title, description, price, stock availability).
-- View all travel packages with real-time stock tracking.
-- Sort and filter packages based on criteria like price, destination, and availability.
-- Admin login system for secure access.
-
----
-
-## How to Use
-1. **Add Travel Packages**: Enter details (title, description, price, stock).
-2. **Modify Stock**: Increase or decrease available stock for each package.
-3. **Edit Packages**: Update package details when needed.
-4. **Delete Packages**: Remove outdated or discontinued travel packages.
-5. **Sort & Filter**: Easily find packages using sorting and filtering options.
+### **Key Features**
+- **Add, Edit, or Delete Travel Packages**: Manage package details such as title, description, price, and stock availability.
+- **Real-Time Stock Tracking**: Monitor available stock for each package.
+- **Advanced Sorting & Filtering**: Quickly find packages based on criteria like price, destination, and availability.
+- **Admin Login System**: Secure access to system functionalities.
 
 ---
 
-## Project Requirements
+## **How to Use**
+1. **Add Travel Packages**: Input essential details like title, description, price, and stock.
+2. **Modify Stock**: Adjust stock quantities as needed for each package.
+3. **Edit Packages**: Update existing package information when required.
+4. **Delete Packages**: Remove discontinued or outdated packages.
+5. **Sort & Filter**: Utilize sorting and filtering options to easily navigate available packages.
+
+---
+
+## **Project Requirements**
 - **Primary Language**: Java
-- **Data Storage**: CSV files
+- **Data Storage**: CSV Files
 - **Version Control**: Git + GitHub
 - **Project Management**: GitHub Project Board
 
 ---
 
-## Development Progress
-### Week 1:
+## **Development Progress**
+### **Week 1:**
 - [x] Add Travel Packages
 - [x] View Travel Packages
 - [x] Modify Stock
 
-### Week 2:
+### **Week 2:**
 - [ ] Delete Travel Packages
 - [ ] Edit Travel Packages
 - [ ] Sorting & Filtering
 
-### Week 3:
+### **Week 3:**
 - [ ] UI Enhancements
 - [ ] System Testing
 - [ ] Admin Login
 
-**Check the full project tasks here:**  
-[Project Tasks Doc](https://docs.google.com/document/d/1bNOieihMCGUcXW06Y7ec1a0M1JouxbGHAMaItOKCehM/edit?usp=sharing)
+**Check out the full project tasks here:**  
+[Project Tasks Document](https://docs.google.com/document/d/1bNOieihMCGUcXW06Y7ec1a0M1JouxbGHAMaItOKCehM/edit?usp=sharing)
 
 ---
 
-## Team Members
+## **Team Members**
 - **Project Manager**: Mila Launen
 - **Technical Manager**: Kendra Peace
 - **Front-End Lead**: Keifer Young
@@ -58,19 +58,22 @@ Rubicon Systems is a **travel package management system** designed to help admin
 
 ---
 
-## Known Risks & Challenges
-- Data accuracy: Implementing stock updates efficiently.
-- Security concerns: Ensuring safe admin access.
-- Performance issues: Optimizing sorting and filtering.
+## **Known Risks & Challenges**
+- **Data Accuracy**: Implementing efficient stock updates.
+- **Security Concerns**: Ensuring safe admin access and data protection.
+- **Performance Optimization**: Enhancing sorting and filtering speed.
 
 ---
 
-## Next Steps
-- Complete sorting & filtering features.
-- Finalize admin login functionality.
-- Improve UI & overall system stability.
+## **Next Steps**
+- Complete **sorting & filtering** functionalities.
+- Finalize **admin login** features.
+- Improve **UI** and **system stability**.
 
-# travelGo
+---
+
+# **TravelGo**
 **Final Program for Organization**
-Here is the link to all of the project tasks we have to complete (organized):
-[Project Tasks Doc Link](https://docs.google.com/document/d/1bNOieihMCGUcXW06Y7ec1a0M1JouxbGHAMaItOKCehM/edit?usp=sharing)
+
+Here’s the link to all of the organized project tasks we need to complete:  
+[Project Tasks Document](https://docs.google.com/document/d/1bNOieihMCGUcXW06Y7ec1a0M1JouxbGHAMaItOKCehM/edit?usp=sharing)
