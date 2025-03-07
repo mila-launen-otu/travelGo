@@ -35,8 +35,8 @@ Rubicon Systems is a **Travel Package Management System** designed to help admin
 - [x] Modify Stock
 
 ### **Week 2:**
-- [ ] Delete Travel Packages
-- [ ] Edit Travel Packages
+- [x] Delete Travel Packages
+- [x] Edit Travel Packages
 - [ ] Sorting & Filtering
 
 ### **Week 3:**
