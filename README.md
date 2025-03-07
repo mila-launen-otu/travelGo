@@ -23,6 +23,12 @@ Originally, we had a Hashmap keeping track of all the details defined as: **<Str
 <String, Travelpackage>
 - String: The randomly generated ID of the Travel Package 
 - TravelPackage: holds the price, desc, name, all that crap
+### 11:56 PM - EDITS
+- alrighty, so I made a few edits as well here... this includes adding a function that overwrites the csv file and appends new info to the csv file 
+- very not time reducing but I don't care it gets the job done 
+- ALSOOOO - I chnaged it so that the AddtoCSV function takes a travelpackage as its parameter, so it can add it like that
+#### TO ADD A TRAVEL PACKAGE
+to add a travel package, use the ```add()``` function in the object class ```addFunct``` which will make you a new ***TravelPackage***. Then input this TravelPackage into the function ```addToCSV(String filePath, MainProg.TravelPackage travelPackage)``` as a parameter. 
 
 
 

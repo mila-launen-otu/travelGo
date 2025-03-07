@@ -33,11 +33,17 @@ public class MainProg {
         public String toString() {
             return "Name: " + name + ", Description: " + description + ", Stock: " + stock + ", Price: $" + price;
         }
+        public String toCsv(){
+            return id + "," + name + "," + description + "," + stock + "," + price;
+        }
 
         public void changeStock(int stockChange){
             this.stock += stock;
         }
 
+        public float getPrice() {
+            return price;
+        }
     }
 
     public static boolean isValid(String s) {
@@ -188,13 +194,9 @@ public class MainProg {
             }
         }
     }
+
     public static void main(String[] args) throws FileNotFoundException {
         String filepth = "database.csv";
-        CsvToHash.addToCSV(filepth);
-        CsvToHash.addToCSV(filepth);
-        CsvToHash.addToCSV(filepth);
-        CsvToHash.updateHashMap();
-        viewPackages();
 
     }
 

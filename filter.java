@@ -1,8 +1,10 @@
+import com.sun.tools.javac.Main;
+
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class filter {
-    public static void filterFunct(HashMap<String, String[]> mapHash){
+    public static void filterFunct(){
         Scanner input = new Scanner(System.in);
         float[] range;
 
@@ -35,11 +37,10 @@ public class filter {
 
 
             // Check if the ID exists in the HashMap
-            for(String id : mapHash.keySet()){
-                float tripPrice = Float.parseFloat(mapHash.get(id)[1]);
-                if( tripPrice <= max && tripPrice >= min){
-                    System.out.println("ID: " + id + " => Title: " + mapHash.get(id)[0] + " Price: " + mapHash.get(id)[1]);
-
+            for(String id : MainProg.travelPackages.keySet()){
+                float tripPrice = MainProg.travelPackages.get(id).getPrice();
+                if(tripPrice <= max && tripPrice >= min){
+                    System.out.println(MainProg.travelPackages.get(id).toString());
                 }
             }
         }

@@ -3,8 +3,9 @@ import java.util.*;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class CsvToHash {
+import static jdk.javadoc.internal.doclets.formats.html.markup.HtmlStyle.header;
 
+public class CsvToHash {
     public static void search(HashMap<String, MainProg.TravelPackage> map){
         Scanner input = new Scanner(System.in);
         System.out.println("Enter an ID number to search (or type 'exit' to quit):");
@@ -26,10 +27,8 @@ public class CsvToHash {
         input.close();
     }
 
-    public static void addToCSV(String filePath){
-        MainProg.TravelPackage newpck = addFunct.add();
-        String pckg = newpck.id + "," + newpck.name + "," + newpck.price+ "," + newpck.stock+ ","+newpck.description;
-
+    public static void addToCSV(String filePath, MainProg.TravelPackage travelPackage) {
+        String pckg = travelPackage.toCsv();
 
         try (FileWriter writer = new FileWriter(filePath, true)) { // 'true' enables append mode
             writer.append("\n");  // Ensure it's on a new line
@@ -40,9 +39,8 @@ public class CsvToHash {
         }
 
     }
-    public static void updateHashMap() throws FileNotFoundException{
-        // Specify the path to the CSV file
-        String filePath = "database.csv";
+    public static void updateHashMap(String filePath) throws FileNotFoundException{
+        // Specify the path to the CSV fil
         // Create a HashMap to store key-value pairs from the CSV
         // Initialize a Scanner to read the file
         Scanner scanner = new Scanner(new File(filePath));
@@ -66,8 +64,20 @@ public class CsvToHash {
         scanner.close();
         MainProg.travelPackages = updatedHashMap;
     }
+    public static void overwriteCsvFile(HashMap<String, MainProg.TravelPackage> map, String filePath){
+        try (FileWriter writer = new FileWriter(filePath, false)) {
+            // Write the header
+            writer.write("");
+            for(String id: map.keySet()){
+                addToCSV(filePath, map.get(id));
+            }
+            System.out.println("CSV file overwritten successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    //RIGHT NOW WHAT HAS HAPPENED: The
-}
+    }
+
 
 
