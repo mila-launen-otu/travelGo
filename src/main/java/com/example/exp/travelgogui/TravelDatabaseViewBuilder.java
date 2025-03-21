@@ -86,7 +86,10 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
                             new Label(item.getName()),
                             new Label(item.getDescription()),
                             new Label("Stock: "+ item.getStock()),
-                            new Label("Price: "+ item.getPrice())
+                            new Label("Price: "+ item.getPrice()),
+                            new Label("Location:" + item.getLocation()),
+                            new Label("Travel Type:" + item.getTravelType()),
+                            new Label("Continent:" + item.getContinent())
                     ));
                 } else {
                     setGraphic(null);

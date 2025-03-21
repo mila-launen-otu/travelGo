@@ -16,6 +16,9 @@ public class TravelPackageDialogs {
         StringProperty descriptionProperty = new SimpleStringProperty("");
         IntegerProperty stockProperty = new SimpleIntegerProperty();
         DoubleProperty priceProperty = new SimpleDoubleProperty();
+        StringProperty locationProperty = new SimpleStringProperty("");
+        StringProperty travelTypeProperty = new SimpleStringProperty("");
+        StringProperty continentProperty = new SimpleStringProperty("");
         Dialog<TravelPackage> dialog = new Dialog<>();
         dialog.setTitle("Add Travel Package");
         DialogPane dialogPane = new DialogPane();
@@ -32,7 +35,13 @@ public class TravelPackageDialogs {
                                 .required("This field can’t be empty"),
                         Field.ofDoubleType(priceProperty)
                                 .label("Price")
-                                .required("This field can’t be empty")
+                                .required("This field can’t be empty"),
+                        Field.ofStringType(locationProperty).label("Location")
+                                .required("This field can't be empty!"),
+                        Field.ofStringType(travelTypeProperty).label("Travel Type")
+                                .required("This field can't be empty!"),
+                        Field.ofStringType(continentProperty).label("Continent")
+                                .required("This field can't be empty!")
                 )
         ).title("Login");
         dialogPane.setContent(new FormRenderer(form));
@@ -41,7 +50,13 @@ public class TravelPackageDialogs {
                 buttonType -> {
                     if (buttonType == ButtonType.OK) {
                         form.persist();
-                        return new TravelPackage(nameProperty.get(), descriptionProperty.get(), stockProperty.get(),priceProperty.get());
+                        return new TravelPackage(nameProperty.get(),
+                                descriptionProperty.get(),
+                                stockProperty.get(),
+                                priceProperty.get(),
+                                locationProperty.get(),
+                                travelTypeProperty.get(),
+                                continentProperty.get());
                     }
                     else {
                         return null;
@@ -59,6 +74,9 @@ public class TravelPackageDialogs {
         StringProperty descriptionProperty = new SimpleStringProperty(travelPackage.getDescription());
         IntegerProperty stockProperty = new SimpleIntegerProperty(travelPackage.getStock());
         DoubleProperty priceProperty = new SimpleDoubleProperty(travelPackage.getPrice());
+        StringProperty locationProperty = new SimpleStringProperty(travelPackage.getLocation());
+        StringProperty travelTypeProperty = new SimpleStringProperty(travelPackage.getTravelType());
+        StringProperty continentProperty = new SimpleStringProperty(travelPackage.getContinent());
 
         Form form = Form.of(
                 Group.of(
@@ -83,7 +101,13 @@ public class TravelPackageDialogs {
                 buttonType -> {
                     if (buttonType == ButtonType.OK) {
                         form.persist();
-                        return new TravelPackage(nameProperty.get(), descriptionProperty.get(), stockProperty.get(),priceProperty.get());
+                        return new TravelPackage(nameProperty.get(),
+                                descriptionProperty.get(),
+                                stockProperty.get(),
+                                priceProperty.get(),
+                                locationProperty.get(),
+                                travelTypeProperty.get(),
+                                continentProperty.get());
                     }
                     else {
                         return null;
