@@ -6,6 +6,7 @@ module com.example.exp.travelgogui {
     requires com.dlsc.formsfx;
     requires javafx.controls;
     requires com.fasterxml.jackson.databind;
+    requires com.ctc.wstx;
 
     opens com.example.exp.travelgogui to javafx.fxml;
     exports com.example.exp.travelgogui;
