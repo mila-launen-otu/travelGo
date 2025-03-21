@@ -4,4 +4,5 @@ It uses the maven build system and this branch can be accessed by using "git clo
 
 to run this branch with the build scripts type into the terminal "mvn clean javafx:run"
 
-to create an executable project based on this branch with the build scripts type into the terminal "mvn clean javafx:jlink"
+to create an executable based on this branch with the build scripts type into the terminal "mvn clean javafx:jlink" the executable will be in the app.zip file in the target directory.
+
