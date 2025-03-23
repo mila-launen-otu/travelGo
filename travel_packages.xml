@@ -4,17 +4,26 @@
     <description>An Amazing island getaway!</description>
     <stock>5</stock>
     <price>499.99</price>
+    <location>Kingston</location>
+    <travelType>Plane</travelType>
+    <continent>North America</continent>
   </TravelPackage>
   <TravelPackage>
     <name>Japan Cherry Blossoms</name>
     <description>Explore Japan in cherry blossom season!</description>
     <stock>10</stock>
     <price>1500.99</price>
+    <location>Tokyo</location>
+    <travelType>Plane</travelType>
+    <continent>Asia</continent>
   </TravelPackage>
   <TravelPackage>
     <name>New York Sight Seeing</name>
     <description>See everything from Times Square to The Statue of Liberty!</description>
     <stock>4</stock>
     <price>1999.99</price>
+    <location>New York</location>
+    <travelType>Plane</travelType>
+    <continent>North America</continent>
   </TravelPackage>
 </TravelPackages>
