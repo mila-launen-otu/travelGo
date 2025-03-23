@@ -6,6 +6,8 @@ import com.dlsc.formsfx.model.structure.Group;
 import com.dlsc.formsfx.view.renderer.FormRenderer;
 import com.example.exp.travelgogui.backend.TravelPackage;
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
@@ -17,8 +19,20 @@ public class TravelPackageDialogs {
         IntegerProperty stockProperty = new SimpleIntegerProperty();
         DoubleProperty priceProperty = new SimpleDoubleProperty();
         StringProperty locationProperty = new SimpleStringProperty("");
-        StringProperty travelTypeProperty = new SimpleStringProperty("");
-        StringProperty continentProperty = new SimpleStringProperty("");
+        //Properties for Combo Boxes
+        ObjectProperty<String> continentProperty = new SimpleObjectProperty<>();
+        ObservableList<String> continentObservableList = FXCollections.observableArrayList(
+                "Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America"
+        );
+        // Creating a ListProperty and binding it to the observable list
+        ListProperty<String> continentList = new SimpleListProperty<>(continentObservableList);
+        //
+        ObjectProperty<String> travelTypeProperty = new SimpleObjectProperty<>();
+        ObservableList<String> travelTypeObservableList = FXCollections.observableArrayList(
+                "Cruise","Plane","Train","Bus","Ferry"
+        );
+        // Creating a ListProperty and binding it to the observable list
+        ListProperty<String> travelTypeList = new SimpleListProperty<>(travelTypeObservableList);
         Dialog<TravelPackage> dialog = new Dialog<>();
         dialog.setTitle("Add Travel Package");
         DialogPane dialogPane = new DialogPane();
@@ -38,14 +52,17 @@ public class TravelPackageDialogs {
                                 .required("This field can’t be empty"),
                         Field.ofStringType(locationProperty).label("Location")
                                 .required("This field can't be empty!"),
-                        Field.ofStringType(travelTypeProperty).label("Travel Type")
-                                .required("This field can't be empty!"),
-                        Field.ofStringType(continentProperty).label("Continent")
-                                .required("This field can't be empty!")
+                        Field.ofSingleSelectionType(travelTypeList,travelTypeProperty)
+                                .label("Travel Type")
+                                .required("Must Select Travel Type"),
+                        Field.ofSingleSelectionType(continentList,continentProperty)
+                                .label("Continent ")
+                                .required("Must Select Travel Type")
                 )
         ).title("Login");
         dialogPane.setContent(new FormRenderer(form));
         dialogPane.getButtonTypes().addAll(ButtonType.OK,ButtonType.CLOSE);
+        dialogPane.setPrefSize(600,400);
         dialog.setResultConverter(
                 buttonType -> {
                     if (buttonType == ButtonType.OK) {
@@ -75,9 +92,20 @@ public class TravelPackageDialogs {
         IntegerProperty stockProperty = new SimpleIntegerProperty(travelPackage.getStock());
         DoubleProperty priceProperty = new SimpleDoubleProperty(travelPackage.getPrice());
         StringProperty locationProperty = new SimpleStringProperty(travelPackage.getLocation());
-        StringProperty travelTypeProperty = new SimpleStringProperty(travelPackage.getTravelType());
-        StringProperty continentProperty = new SimpleStringProperty(travelPackage.getContinent());
-
+        //Properties for Combo Boxes
+        ObjectProperty<String> continentProperty = new SimpleObjectProperty<>(travelPackage.getContinent());
+        ObservableList<String> continentObservableList = FXCollections.observableArrayList(
+                "Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America"
+        );
+        // Creating a ListProperty and binding it to the observable list
+        ListProperty<String> continentList = new SimpleListProperty<>(continentObservableList);
+        //
+        ObjectProperty<String> travelTypeProperty = new SimpleObjectProperty<>(travelPackage.getTravelType());
+        ObservableList<String> travelTypeObservableList = FXCollections.observableArrayList(
+                "Cruise","Flight","Train","Bus","Ferry"
+        );
+        // Creating a ListProperty and binding it to the observable list
+        ListProperty<String> travelTypeList = new SimpleListProperty<>(travelTypeObservableList);
         Form form = Form.of(
                 Group.of(
                         Field.ofStringType(nameProperty)
@@ -91,11 +119,21 @@ public class TravelPackageDialogs {
                                 .required("This field can’t be empty"),
                         Field.ofDoubleType(priceProperty)
                                 .label("Price")
-                                .required("This field can’t be empty")
+                                .required("This field can’t be empty"),
+                        Field.ofStringType(locationProperty).label("Location")
+                                .required("This field can't be empty!"),
+                        Field.ofSingleSelectionType(travelTypeList,travelTypeProperty)
+                                .label("Travel Type")
+                                .required("Must Select Travel Type"),
+                        Field.ofSingleSelectionType(continentList,continentProperty)
+                                .label("Continent ")
+                                .required("Must Select Travel Type")
+
                 )
-        ).title("Login");
+        ).title("Edit Travel Package");
         dialogPane.setContent(new FormRenderer(form));
         dialogPane.getButtonTypes().addAll(ButtonType.OK,ButtonType.CLOSE);
+        dialogPane.setPrefSize(600,400);
         dialog.setDialogPane(dialogPane);
         dialog.setResultConverter(
                 buttonType -> {

@@ -8,15 +8,22 @@ public class TravelPackage {
     private String description;
     private int stock;
     private double price;
+    private String location;
+    private String travelType;
+    private String continent;
 
     // Constructors
     public TravelPackage() {}
 
-    public TravelPackage(String name, String description, int stock, double price) {
+    public TravelPackage(String name, String description, int stock, double price,String location,String travelType,
+                         String continent) {
         this.name = name;
         this.description = description;
         this.stock = stock;
         this.price = price;
+        this.location = location;
+        this.travelType = travelType;
+        this.continent = continent;
     }
 
     // Getters and Setters
@@ -31,4 +38,30 @@ public class TravelPackage {
 
     public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    // Getter and Setter for travelType
+    public String getTravelType() {
+        return travelType;
+    }
+
+    public void setTravelType(String travelType) {
+        this.travelType = travelType;
+    }
+
+    // Getter and Setter for continent
+    public String getContinent() {
+        return continent;
+    }
+
+    public void setContinent(String continent) {
+        this.continent = continent;
+    }
 }

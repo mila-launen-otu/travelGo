@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class TravelDatabaseApplication extends Application {
     @Override
     public void start(Stage primaryStage){
-        primaryStage.setScene(new Scene(new TravelDatabaseController().getView(),1000,720));
+        primaryStage.setScene(new Scene(new TravelDatabaseController().getView(),1280,720));
         primaryStage.setTitle("Travel Database");
         primaryStage.show();
     }
