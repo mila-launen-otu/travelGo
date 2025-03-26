@@ -7,8 +7,8 @@ public class Main {
     TravelPackageManager manager = new TravelPackageManager();
 
     List<TravelPackage> packageList = Arrays.asList(
-            new TravelPackage("Jamaica All Inclusive", "An Amazing island getaway!", 5, 499.99),
-            new TravelPackage("Japan Cherry Blossoms", "Explore Japan in cherry blossom season!", 10, 1500.99)
+            new TravelPackage("Jamaica All Inclusive", "An Amazing island getaway!", 5, 499.99, Continent.North_America),
+            new TravelPackage("Japan Cherry Blossoms", "Explore Japan in cherry blossom season!", 10, 1500.99, Continent.Asia)
     );
 
     TravelPackageList travelPackageList = new TravelPackageList(packageList);
