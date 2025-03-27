@@ -25,7 +25,9 @@ public class TravelDatabaseModel {
         return filteredTravelPackageList.get();
     }
 
-    public final void setFilteredTravelPackageList(ObservableList<TravelPackage> value){filteredTravelPackageList.set(value);}
+    public final void setFilteredTravelPackageList(ObservableList<TravelPackage> value) {
+        filteredTravelPackageList.set(value);
+    }
 
     public ListProperty<TravelPackage> filteredTravelPackageList(){
         return filteredTravelPackageList;
