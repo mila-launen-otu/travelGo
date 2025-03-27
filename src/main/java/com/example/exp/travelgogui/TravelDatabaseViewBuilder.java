@@ -83,30 +83,32 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         );
         return listView;
     }
+
     //Custom ListCell for TravelPackages For Later
     private ListCell<TravelPackage> createCell() {
         return new ListCell<TravelPackage>() {
             private Region layout;
+
             @Override
             public void updateItem(TravelPackage item, boolean isEmpty) {
                 super.updateItem(item, isEmpty);
                 if (!isEmpty && (item != null)) {
-
                     // Bold label for name of package
                     Label packageName = new Label(item.getName());
                     packageName.setStyle("-fx-font-weight: bold; -fx-font-size: 14;");
 
+                    // Set the graphic for the cell with package details
                     setGraphic(new VBox(
-//                            new Label(item.getName()),
                             packageName,
                             new Label(item.getDescription()),
-                            new Label("Stock: "+ item.getStock()),
-                            new Label("Price: $"+ item.getPrice()),
+                            new Label("Stock: " + item.getStock()),
+                            new Label("Price: $" + item.getPrice()),
                             new Label("Location: " + item.getLocation()),
                             new Label("Travel Type: " + item.getTravelType()),
                             new Label("Continent: " + item.getContinent())
                     ));
                 } else {
+                    // Clear the cell if item is empty or null
                     setGraphic(null);
                     setText(null);
                 }
@@ -116,24 +118,27 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
 
     private Node createFilterBar() {
         HBox filterNavigation = new HBox();
-//        filterNavigation.setAlignment(Pos.CENTER_LEFT);
         filterNavigation.setSpacing(10);
         filterNavigation.setPadding(new Insets(10));
 
+        // Dropdown for selecting continent
         ComboBox<String> continentDropdown = new ComboBox<>();
         continentDropdown.getItems().addAll("All", "Asia", "Africa", "North America", "South America",
                 "Antarctica", "Oceania");
         continentDropdown.setValue("All"); // Default
 
+        // Dropdown for selecting travel type
         ComboBox<String> travelTypeDropdown = new ComboBox<>();
         travelTypeDropdown.getItems().addAll("All", "Cruise", "Plane", "Train", "Bus", "Ferry");
         travelTypeDropdown.setValue("All"); // Default
 
+        // Button to apply the filter
         Button filterButton = new Button("Filter");
         filterButton.setOnAction(event ->
                 applyFilter(continentDropdown.getValue(), travelTypeDropdown.getValue())
         );
 
+        // Add components to the filter bar
         filterNavigation.getChildren().addAll(
                 new Label("Continent: "), continentDropdown,
                 new Label("Travel Type: "), travelTypeDropdown,
@@ -146,13 +151,14 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
     private void applyFilter(String continent, String travelType) {
         ObservableList<TravelPackage> fullList = model.getTravelPackageList();
 
+        // Filter the list based on selected continent and travel type
         ObservableList<TravelPackage> filteredList = fullList.filtered(travelPackage -> {
-            boolean continentFilter = continent.equals("All") || continent.equals(travelPackage.getContinent()); // travelPackage.getTravelType().equals(travelType)
+            boolean continentFilter = continent.equals("All") || continent.equals(travelPackage.getContinent());
             boolean travelTypeFilter = travelType.equals("All") || travelType.equals(travelPackage.getTravelType());
             return continentFilter && travelTypeFilter;
         });
 
+        // Update the model with the filtered list
         model.setFilteredTravelPackageList(filteredList);
-//        listView.setItems(filteredList);
     }
 }
