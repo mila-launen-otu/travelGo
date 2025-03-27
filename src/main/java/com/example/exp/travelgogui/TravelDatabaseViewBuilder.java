@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.util.Builder;
+import java.awt.Font;
 import static com.example.exp.travelgogui.components.TravelPackageDialogs.*;
 
 public class TravelDatabaseViewBuilder implements Builder<Region> {
@@ -20,7 +21,7 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
     public TravelDatabaseViewBuilder(TravelDatabaseModel model,Runnable onSave) {
         this.model = model;
         this.onSave = onSave;
-        applyFilter("All");
+        applyFilter("All", "All");
     }
 
     @Override
@@ -90,14 +91,20 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
             public void updateItem(TravelPackage item, boolean isEmpty) {
                 super.updateItem(item, isEmpty);
                 if (!isEmpty && (item != null)) {
+
+                    // Bold label for name of package
+                    Label packageName = new Label(item.getName());
+                    packageName.setStyle("-fx-font-weight: bold; -fx-font-size: 14;");
+
                     setGraphic(new VBox(
-                            new Label(item.getName()),
+//                            new Label(item.getName()),
+                            packageName,
                             new Label(item.getDescription()),
                             new Label("Stock: "+ item.getStock()),
-                            new Label("Price: "+ item.getPrice()),
-                            new Label("Location:" + item.getLocation()),
-                            new Label("Travel Type:" + item.getTravelType()),
-                            new Label("Continent:" + item.getContinent())
+                            new Label("Price: $"+ item.getPrice()),
+                            new Label("Location: " + item.getLocation()),
+                            new Label("Travel Type: " + item.getTravelType()),
+                            new Label("Continent: " + item.getContinent())
                     ));
                 } else {
                     setGraphic(null);
@@ -109,7 +116,7 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
 
     private Node createFilterBar() {
         HBox filterNavigation = new HBox();
-        filterNavigation.setAlignment(Pos.CENTER_LEFT);
+//        filterNavigation.setAlignment(Pos.CENTER_LEFT);
         filterNavigation.setSpacing(10);
         filterNavigation.setPadding(new Insets(10));
 
@@ -118,21 +125,34 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
                 "Antarctica", "Oceania");
         continentDropdown.setValue("All"); // Default
 
+        ComboBox<String> travelTypeDropdown = new ComboBox<>();
+        travelTypeDropdown.getItems().addAll("All", "Cruise", "Plane", "Train", "Bus", "Ferry");
+        travelTypeDropdown.setValue("All"); // Default
+
         Button filterButton = new Button("Filter");
         filterButton.setOnAction(event ->
-                applyFilter(continentDropdown.getValue()));
+                applyFilter(continentDropdown.getValue(), travelTypeDropdown.getValue())
+        );
 
-        filterNavigation.getChildren().addAll(new Label("Continent: "), continentDropdown, filterButton);
+        filterNavigation.getChildren().addAll(
+                new Label("Continent: "), continentDropdown,
+                new Label("Travel Type: "), travelTypeDropdown,
+                filterButton
+        );
 
         return filterNavigation;
     }
 
-    private void applyFilter(String continent) {
+    private void applyFilter(String continent, String travelType) {
         ObservableList<TravelPackage> fullList = model.getTravelPackageList();
-        ObservableList<TravelPackage> filteredList = fullList.filtered(travelPackage ->{
-            boolean continentFilter = continent.equals("All") || travelPackage.getContinent().equals(continent);
-            return continentFilter;
+
+        ObservableList<TravelPackage> filteredList = fullList.filtered(travelPackage -> {
+            boolean continentFilter = continent.equals("All") || continent.equals(travelPackage.getContinent()); // travelPackage.getTravelType().equals(travelType)
+            boolean travelTypeFilter = travelType.equals("All") || travelType.equals(travelPackage.getTravelType());
+            return continentFilter && travelTypeFilter;
         });
+
         model.setFilteredTravelPackageList(filteredList);
+//        listView.setItems(filteredList);
     }
 }
