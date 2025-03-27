@@ -5,7 +5,7 @@
     <stock>5</stock>
     <price>499.99</price>
     <location>Kingston</location>
-    <travelType>Flight</travelType>
+    <travelType>Plane</travelType>
     <continent>North America</continent>
   </TravelPackage>
   <TravelPackage>
@@ -14,7 +14,7 @@
     <stock>10</stock>
     <price>1500.99</price>
     <location>Tokyo</location>
-    <travelType>Flight</travelType>
+    <travelType>Plane</travelType>
     <continent>Asia</continent>
   </TravelPackage>
   <TravelPackage>
@@ -23,7 +23,16 @@
     <stock>4</stock>
     <price>1999.99</price>
     <location>New York</location>
-    <travelType>Flight</travelType>
+    <travelType>Bus</travelType>
+    <continent>North America</continent>
+  </TravelPackage>
+  <TravelPackage>
+    <name>3 Night Bahamas</name>
+    <description>Find every modern comfort!</description>
+    <stock>4</stock>
+    <price>221.00</price>
+    <location>Miami to Bahamas</location>
+    <travelType>Cruise</travelType>
     <continent>North America</continent>
   </TravelPackage>
 </TravelPackages>
