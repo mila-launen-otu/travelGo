@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -14,28 +15,27 @@ import static com.example.exp.travelgogui.components.TravelPackageDialogs.*;
 public class TravelDatabaseViewBuilder implements Builder<Region> {
     private final TravelDatabaseModel model;
     private final Runnable onSave;
-    private final ObservableList<TravelPackage> originalList = FXCollections.observableArrayList();
     private final ListView<TravelPackage> listView = new ListView<>();
+
     public TravelDatabaseViewBuilder(TravelDatabaseModel model,Runnable onSave) {
         this.model = model;
         this.onSave = onSave;
+        applyFilter("All");
     }
 
     @Override
     public Region build() {
         BorderPane borderPane = new BorderPane();
-        borderPane.setTop(createTop());
-
-        VBox centerBox = new VBox();
-        centerBox.getChildren().addAll(createFilterBar(), travelPackagesBox());
-        borderPane.setCenter(centerBox);
-//        borderPane.setCenter(createCentre());
+        borderPane.setTop(new VBox(adminBar(),createFilterBar()));
+        borderPane.setCenter(travelPackagesBox());
         return borderPane;
     }
-    private Node createTop(){
+    private Node adminBar(){
         Button removeButton = new Button("Remove Selected Travel Package");
         removeButton.setOnAction(_ ->
-                model.travelPackageListProperty().remove(model.getSelectedItemProperty().get())
+                model.travelPackageListProperty().remove(
+                    model.getFilteredTravelPackageList().get(model.getSelectedItemProperty().get())
+                )
         );
         Button addButton = new Button("Add Travel Package");
         addButton.setOnAction(
@@ -48,10 +48,12 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         updateButton.setOnAction(
                 _ ->{
                     int selectedPackage = model.getSelectedItemProperty().get();
-                    UpdateTravelPackageDialog(model.travelPackageListProperty()
-                            .get(selectedPackage)).showAndWait().ifPresent(
+                    TravelPackage selectedTravelPackage = model.filteredTravelPackageList()
+                        .get(selectedPackage);
+                    UpdateTravelPackageDialog(selectedTravelPackage).showAndWait().ifPresent(
                             travelPackage -> {
-                                model.travelPackageListProperty().set(selectedPackage,travelPackage);
+                                model.travelPackageListProperty()
+                                    .set(model.travelPackageListProperty().indexOf(selectedTravelPackage),travelPackage);
                             }
                     );
                 }
@@ -71,34 +73,13 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         return hBox;
     }
 
-    private Node createCentre() {
-        return travelPackagesBox();
-    }
-
     private Node travelPackagesBox(){
-//        ListView<TravelPackage> list = new ListView<>();
-//        list.setCellFactory(travelPackage -> createCell());
-//        list.itemsProperty().bind(model.travelPackageListProperty());
-//        list.getSelectionModel().getSelectedIndices().addListener((ListChangeListener<Integer>) change -> model.setSelectedItemProperty(change.getList().getFirst()));
-//        return list;
-
-//        listView.setCellFactory(travelPackage -> createCell());
-////        listView.itemsProperty().bind(model.travelPackageListProperty());
-//        listView.setItems(model.getTravelPackageList());
-//        listView.getSelectionModel().getSelectedIndices().addListener(
-//                (ListChangeListener<Integer>) change -> model.setSelectedItemProperty(
-//                        change.getList().getFirst())
-//        );
-//
-//        return listView;
-
         listView.setCellFactory(travelPackage -> createCell());
-        listView.setItems(model.getTravelPackageList());
+        listView.itemsProperty().bind(model.filteredTravelPackageList());
         listView.getSelectionModel().getSelectedIndices().addListener(
                 (ListChangeListener<Integer>) change ->
                         model.setSelectedItemProperty(change.getList().getFirst())
         );
-
         return listView;
     }
     //Custom ListCell for TravelPackages For Later
@@ -128,20 +109,7 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
 
     private Node createFilterBar() {
         HBox filterNavigation = new HBox();
-//        filterNavigation.setSpacing(10);
-//        filterNavigation.setPadding(new Insets(10)); // Add: 5?
-//
-//        String[] filterButtons = {"All", "Asia", "Africa", "North America", "South America", "Antarctica", "Europe",
-//                "Australia/Oceania"};
-//
-//        for (String button : filterButtons) {
-//            Button fB = new Button(button);
-//            fB.setOnAction(event -> applyFilter(button));
-//            filterNavigation.getChildren().add(fB);
-//        }
-//
-//        return filterNavigation;
-
+        filterNavigation.setAlignment(Pos.CENTER_LEFT);
         filterNavigation.setSpacing(10);
         filterNavigation.setPadding(new Insets(10));
 
@@ -157,32 +125,14 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         filterNavigation.getChildren().addAll(new Label("Continent: "), continentDropdown, filterButton);
 
         return filterNavigation;
-
     }
 
     private void applyFilter(String continent) {
-//        if (originalList.isEmpty()) {
-//            originalList.addAll(model.travelPackageListProperty());
-//        }
-//
-//        if (continent.equals("All")) {
-//            listView.setItems(FXCollections.observableArrayList(originalList));
-//        } else {
-//            ObservableList<TravelPackage> filteredList = originalList.filtered(
-//                    travelPackage -> continent.equals(travelPackage.getContinent())
-//            );
-//            listView.setItems(filteredList);
-//        }
-
         ObservableList<TravelPackage> fullList = model.getTravelPackageList();
-
-        if (continent.equals("All")) {
-            listView.setItems(fullList);
-        } else {
-            ObservableList<TravelPackage> filteredList = fullList.filtered(travelPackage ->
-                    continent.equals(travelPackage.getContinent())
-            );
-            listView.setItems(filteredList);
-        }
+        ObservableList<TravelPackage> filteredList = fullList.filtered(travelPackage ->{
+            boolean continentFilter = continent.equals("All") || travelPackage.getContinent().equals(continent);
+            return continentFilter;
+        });
+        model.setFilteredTravelPackageList(filteredList);
     }
 }

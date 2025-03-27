@@ -5,7 +5,7 @@
     <stock>5</stock>
     <price>499.99</price>
     <location>Kingston</location>
-    <travelType>Plane</travelType>
+    <travelType>Flight</travelType>
     <continent>North America</continent>
   </TravelPackage>
   <TravelPackage>
@@ -14,7 +14,7 @@
     <stock>10</stock>
     <price>1500.99</price>
     <location>Tokyo</location>
-    <travelType>Plane</travelType>
+    <travelType>Flight</travelType>
     <continent>Asia</continent>
   </TravelPackage>
   <TravelPackage>
@@ -23,7 +23,7 @@
     <stock>4</stock>
     <price>1999.99</price>
     <location>New York</location>
-    <travelType>Plane</travelType>
+    <travelType>Flight</travelType>
     <continent>North America</continent>
   </TravelPackage>
 </TravelPackages>
