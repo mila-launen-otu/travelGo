@@ -11,7 +11,7 @@ import java.util.List;
 public class TravelPackageList {
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "TravelPackage")
-    private List<TravelPackage> packages;
+    private List<TravelPackage> packages = new ArrayList<>();
 
     public TravelPackageList() {}
 
