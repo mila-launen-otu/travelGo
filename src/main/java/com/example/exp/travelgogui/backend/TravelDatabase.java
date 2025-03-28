@@ -22,6 +22,9 @@ public class TravelDatabase {
 
     // Load travel packages from XML
     public TravelPackageList loadPackages() throws IOException {
+        if (!new File(FILE_PATH).exists()) {
+            return new TravelPackageList();
+        }
         return xmlMapper.readValue(new File(FILE_PATH), TravelPackageList.class);
     }
 }
