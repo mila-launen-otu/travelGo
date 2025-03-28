@@ -1,16 +1,17 @@
 package com.example.exp.travelgogui;
 
 import com.example.exp.travelgogui.backend.TravelPackage;
-import javafx.collections.FXCollections;
+import java.util.Comparator;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.util.Builder;
-import java.awt.Font;
+
 import static com.example.exp.travelgogui.components.TravelPackageDialogs.*;
 
 public class TravelDatabaseViewBuilder implements Builder<Region> {
@@ -21,7 +22,10 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
     public TravelDatabaseViewBuilder(TravelDatabaseModel model,Runnable onSave) {
         this.model = model;
         this.onSave = onSave;
-        applyFilter("All", "All");
+        setInitalFilter();
+    }
+    private void setInitalFilter(){
+        applyFilter("All", "All","None",true);
     }
 
     @Override
@@ -87,8 +91,6 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
     //Custom ListCell for TravelPackages For Later
     private ListCell<TravelPackage> createCell() {
         return new ListCell<TravelPackage>() {
-            private Region layout;
-
             @Override
             public void updateItem(TravelPackage item, boolean isEmpty) {
                 super.updateItem(item, isEmpty);
@@ -120,6 +122,7 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         HBox filterNavigation = new HBox();
         filterNavigation.setSpacing(10);
         filterNavigation.setPadding(new Insets(10));
+        filterNavigation.setAlignment(Pos.CENTER_LEFT);
 
         // Dropdown for selecting continent
         ComboBox<String> continentDropdown = new ComboBox<>();
@@ -132,23 +135,45 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         travelTypeDropdown.getItems().addAll("All", "Cruise", "Plane", "Train", "Bus", "Ferry");
         travelTypeDropdown.setValue("All"); // Default
 
+        //Dropdown for selecting sorting Type
+        ComboBox<String> sortOptions = new ComboBox<>();
+        sortOptions.getItems().addAll("None","Price", "Stock");
+        sortOptions.setValue("None"); // Default
+
+        // ToggleButtons for sorting
+        ToggleButton toggleSort = new ToggleButton("Ascending");
+
+        toggleSort.setOnAction(event -> {
+            boolean ascending = toggleSort.isSelected();
+            if (ascending){
+                toggleSort.setText("Ascending");
+            }
+            else {
+                toggleSort.setText("Descending");
+            }
+        });
+
         // Button to apply the filter
         Button filterButton = new Button("Filter");
         filterButton.setOnAction(event ->
-                applyFilter(continentDropdown.getValue(), travelTypeDropdown.getValue())
+                applyFilter(continentDropdown.getValue(), travelTypeDropdown.getValue(),
+                    sortOptions.getValue(),toggleSort.isSelected())
         );
 
         // Add components to the filter bar
         filterNavigation.getChildren().addAll(
                 new Label("Continent: "), continentDropdown,
                 new Label("Travel Type: "), travelTypeDropdown,
+                new Label("Sort by: "), sortOptions,
+                new Label("Order: "), toggleSort,
                 filterButton
         );
 
         return filterNavigation;
     }
 
-    private void applyFilter(String continent, String travelType) {
+    private void applyFilter(String continent, String travelType,
+        String sortingType,Boolean isAscending) {
         ObservableList<TravelPackage> fullList = model.getTravelPackageList();
 
         // Filter the list based on selected continent and travel type
@@ -157,8 +182,22 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
             boolean travelTypeFilter = travelType.equals("All") || travelType.equals(travelPackage.getTravelType());
             return continentFilter && travelTypeFilter;
         });
+        SortedList<TravelPackage> sortedList = new SortedList<>(filteredList);
+        //Sort List
+        if (sortingType.equals("Price")) {
+            sortedList.setComparator(Comparator.comparingDouble(TravelPackage::getPrice));
+        } else if(sortingType.equals("Stock")) {
+            sortedList.setComparator(Comparator.comparingInt(TravelPackage::getStock));
+        }
+        else {
+            sortedList.setComparator(null);
+        }
+        // Apply reversed order if the list is sorted and in descending order
+        if (sortedList.getComparator() != null && !isAscending) {
+            sortedList.setComparator(sortedList.getComparator().reversed());
+        }
 
         // Update the model with the filtered list
-        model.setFilteredTravelPackageList(filteredList);
+        model.setFilteredTravelPackageList(sortedList);
     }
 }
