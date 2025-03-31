@@ -11,12 +11,13 @@ public class TravelPackage {
     private String location;
     private String travelType;
     private String continent;
+    private String imageUrl;
 
     // Constructors
     public TravelPackage() {}
 
     public TravelPackage(String name, String description, int stock, double price,String location,String travelType,
-                         String continent) {
+                         String continent, String imageUrl) {
         this.name = name;
         this.description = description;
         this.stock = stock;
@@ -24,6 +25,7 @@ public class TravelPackage {
         this.location = location;
         this.travelType = travelType;
         this.continent = continent;
+        this.imageUrl = imageUrl;
     }
 
     // Getters and Setters
@@ -64,4 +66,9 @@ public class TravelPackage {
     public void setContinent(String continent) {
         this.continent = continent;
     }
+
+    public String getImageUrl() { return imageUrl; }
+
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+
 }
