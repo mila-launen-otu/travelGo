@@ -7,6 +7,7 @@
     <location>Kingston</location>
     <travelType>Plane</travelType>
     <continent>North America</continent>
+    <imageUrl>/Users/kleincafa/Year 2 (2024 - 2025)/Winter Semester 2025/CSCI 2040U - Software Design &amp; Analysis/travelGo (as of Mar. 28)/travelGo/src/main/resources/images/alex-azabache-V83v-MYB_Z8-unsplash.jpg</imageUrl>
   </TravelPackage>
   <TravelPackage>
     <name>Japan Cherry Blossoms</name>
@@ -16,6 +17,7 @@
     <location>Tokyo</location>
     <travelType>Plane</travelType>
     <continent>Asia</continent>
+    <imageUrl>src/main/resources/images/default.jpg</imageUrl>
   </TravelPackage>
   <TravelPackage>
     <name>New York Sight Seeing</name>
@@ -25,14 +27,16 @@
     <location>New York</location>
     <travelType>Bus</travelType>
     <continent>North America</continent>
+    <imageUrl>src/main/resources/images/default.jpg</imageUrl>
   </TravelPackage>
   <TravelPackage>
     <name>3 Night Bahamas</name>
     <description>Find every modern comfort!</description>
     <stock>4</stock>
-    <price>221.00</price>
+    <price>221.0</price>
     <location>Miami to Bahamas</location>
     <travelType>Cruise</travelType>
     <continent>North America</continent>
+    <imageUrl>src/main/resources/images/default.jpg</imageUrl>
   </TravelPackage>
 </TravelPackages>
