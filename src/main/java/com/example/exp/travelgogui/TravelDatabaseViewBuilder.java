@@ -78,29 +78,39 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         return hBox;
     }
 
-    private Node travelPackagesBox(){
+    private Node travelPackagesBox() {
+        // Set the cell factory for the ListView to use custom cells
         listView.setCellFactory(travelPackage -> createCell());
+
+        // Bind the items property of the ListView to the filtered travel package list
         listView.itemsProperty().bind(model.filteredTravelPackageList());
+
+        // Add a listener to update the selected item property in the model when the selection changes
         listView.getSelectionModel().getSelectedIndices().addListener(
-                (ListChangeListener<Integer>) change ->
-                        model.setSelectedItemProperty(change.getList().getFirst())
+                (ListChangeListener<? super Integer>) change -> {
+                    if (!change.getList().isEmpty()) {
+                        model.setSelectedItemProperty(change.getList().get(0));
+                    }
+                }
         );
+
         return listView;
     }
 
-    //Custom ListCell for TravelPackages For Later
+    // Custom ListCell for TravelPackages
     private ListCell<TravelPackage> createCell() {
-        return new ListCell<TravelPackage>() {
+        ListCell<TravelPackage> cell = new ListCell<>() {
             @Override
-            public void updateItem(TravelPackage item, boolean isEmpty) {
-                super.updateItem(item, isEmpty);
-                if (!isEmpty && (item != null)) {
-                    // Bold label for name of package
+            protected void updateItem(TravelPackage item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (item != null && !isEmpty()) {
+                    // Create a label for the package name with bold and larger font
                     Label packageName = new Label(item.getName());
                     packageName.setStyle("-fx-font-weight: bold; -fx-font-size: 14;");
 
-                    // Set the graphic for the cell with package details
-                    setGraphic(new VBox(
+                    // Create a VBox to hold the package details
+                    VBox content = new VBox(
                             packageName,
                             new Label(item.getDescription()),
                             new Label("Stock: " + item.getStock()),
@@ -108,14 +118,27 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
                             new Label("Location: " + item.getLocation()),
                             new Label("Travel Type: " + item.getTravelType()),
                             new Label("Continent: " + item.getContinent())
-                    ));
+                    );
+
+                    // Set the VBox as the graphic for the cell
+                    setGraphic(content);
                 } else {
-                    // Clear the cell if item is empty or null
+                    // Clear the graphic and text if the item is null or empty
                     setGraphic(null);
                     setText(null);
                 }
             }
         };
+
+        // Add a mouse click listener to open the detail view on double-click
+        cell.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2 && !cell.isEmpty()) {
+                TravelPackage clicked = cell.getItem();
+                TravelPackageDetailView.newView(cell.getItem());
+            }
+        });
+
+        return cell;
     }
 
     private Node createFilterBar() {
