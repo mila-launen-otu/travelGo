@@ -5,8 +5,8 @@ This document provides an overview of the Travel Package Management Application 
 
 ## Technologies Used
 - Frontend: javafx
-- 
-
+- Backend: Java
+- Project Management: GitHub Project Board
 ## Project Structure
 ```
 travelGo/
