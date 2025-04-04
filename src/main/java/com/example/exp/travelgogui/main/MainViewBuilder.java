@@ -18,8 +18,8 @@ public class MainViewBuilder implements Builder<Region> {
 
     @Override
     public Region build() {
-        loginContent.visibleProperty().bind(model.function1SelectedProperty());
-        databaseContent.visibleProperty().bind(model.function2SelectedProperty());
+        loginContent.visibleProperty().bind(model.LoginSelectedSelectedProperty());
+        databaseContent.visibleProperty().bind(model.DatabaseSelectedSelectedProperty());
         return new StackPane(loginContent, databaseContent);
     }
 }

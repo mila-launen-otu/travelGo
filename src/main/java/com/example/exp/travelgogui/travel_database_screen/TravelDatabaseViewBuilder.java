@@ -31,7 +31,11 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
     @Override
     public Region build() {
         BorderPane borderPane = new BorderPane();
-        borderPane.setTop(new VBox(adminBar(),createFilterBar()));
+        borderPane.setPrefSize(1280,720);
+        Node adminBar = adminBar();
+        adminBar.visibleProperty().bind(model.isLoggedIn);
+        adminBar.managedProperty().bind(model.isLoggedIn);
+        borderPane.setTop(new VBox(adminBar,createFilterBar()));
         borderPane.setCenter(travelPackagesBox());
         return borderPane;
     }

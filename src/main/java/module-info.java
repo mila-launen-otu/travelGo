@@ -13,6 +13,7 @@ module com.example.exp.travelgogui {
     exports com.example.exp.travelgogui;
     exports com.example.exp.travelgogui.travel_database_screen.backend;
     opens com.example.exp.travelgogui.travel_database_screen.backend to javafx.fxml;
-  exports com.example.exp.travelgogui.travel_database_screen;
-  opens com.example.exp.travelgogui.travel_database_screen to javafx.fxml;
+    exports com.example.exp.travelgogui.travel_database_screen;
+    opens com.example.exp.travelgogui.travel_database_screen to javafx.fxml;
+    exports com.example.exp.travelgogui.login_screen.backend to com.fasterxml.jackson.databind;
 }

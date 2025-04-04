@@ -16,10 +16,10 @@ public class MainModel {
     private final BooleanProperty databaseSelected = new SimpleBooleanProperty(false);
     public final BooleanProperty isLoggedIn = new SimpleBooleanProperty(false);
     private final ObjectProperty<Screens> screescreenPropertynProperty = new SimpleObjectProperty<Screens>(Screens.LOGIN);
-    public BooleanProperty function1SelectedProperty() {
+    public BooleanProperty LoginSelectedSelectedProperty() {
         return loginSelected;
     }
-    public BooleanProperty function2SelectedProperty() {
+    public BooleanProperty DatabaseSelectedSelectedProperty() {
         return databaseSelected;
     }
     Runnable runExample = () -> {

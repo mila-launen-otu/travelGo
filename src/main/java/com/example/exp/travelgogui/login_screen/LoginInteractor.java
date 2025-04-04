@@ -1,16 +1,29 @@
 package com.example.exp.travelgogui.login_screen;
 
+import com.example.exp.travelgogui.login_screen.backend.LoginCredentials;
+import com.example.exp.travelgogui.login_screen.backend.LoginCredentialsDatabase;
+import com.example.exp.travelgogui.travel_database_screen.backend.TravelDatabase;
+import java.io.IOException;
 import javafx.concurrent.Task;
 
 public class LoginInteractor {
     private LoginModel model;
     private Runnable runExample;
-    public LoginInteractor(LoginModel model, Runnable runExample) {
+  private final LoginCredentialsDatabase database = new LoginCredentialsDatabase();
+
+  public LoginInteractor(LoginModel model, Runnable runExample) {
             this.model = model;
             this.runExample = runExample;
     }
     private Boolean checkLogin(String userName,String password){
-      return true;
+      try {
+        LoginCredentials loginCredentials = database.loadLoginCredential();
+        return
+            loginCredentials.getUsername().equals(userName) &&
+                loginCredentials.getPassword().equals(password);
+      } catch (IOException e) {
+        return false;
+      }
     }
   public void checkLoginTask (String userName,String password){
     Task<Boolean> loginTask = new Task<Boolean>() {
