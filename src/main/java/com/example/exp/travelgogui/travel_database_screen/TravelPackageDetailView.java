@@ -1,6 +1,6 @@
-package com.example.exp.travelgogui;
+package com.example.exp.travelgogui.travel_database_screen;
 
-import com.example.exp.travelgogui.backend.TravelPackage;
+import com.example.exp.travelgogui.travel_database_screen.backend.TravelPackage;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

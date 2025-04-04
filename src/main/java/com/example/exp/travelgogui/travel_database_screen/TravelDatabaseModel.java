@@ -1,6 +1,6 @@
-package com.example.exp.travelgogui;
+package com.example.exp.travelgogui.travel_database_screen;
 
-import com.example.exp.travelgogui.backend.TravelPackage;
+import com.example.exp.travelgogui.travel_database_screen.backend.TravelPackage;
 import javafx.beans.property.*;
 import javafx.collections.ObservableList;
 
@@ -40,4 +40,6 @@ public class TravelDatabaseModel {
     }
 
     public final void setSelectedItemProperty(Integer value){selectedItem.set(value);}
+
+    public final BooleanProperty isLoggedIn = new SimpleBooleanProperty(false);
 }

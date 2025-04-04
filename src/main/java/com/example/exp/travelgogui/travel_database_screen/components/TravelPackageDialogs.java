@@ -1,10 +1,10 @@
-package com.example.exp.travelgogui.components;
+package com.example.exp.travelgogui.travel_database_screen.components;
 
 import com.dlsc.formsfx.model.structure.Field;
 import com.dlsc.formsfx.model.structure.Form;
 import com.dlsc.formsfx.model.structure.Group;
 import com.dlsc.formsfx.view.renderer.FormRenderer;
-import com.example.exp.travelgogui.backend.TravelPackage;
+import com.example.exp.travelgogui.travel_database_screen.backend.TravelPackage;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

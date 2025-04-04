@@ -1,6 +1,6 @@
-package com.example.exp.travelgogui;
+package com.example.exp.travelgogui.travel_database_screen;
 
-import com.example.exp.travelgogui.backend.TravelPackage;
+import com.example.exp.travelgogui.travel_database_screen.backend.TravelPackage;
 import java.util.Comparator;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.util.Builder;
 
-import static com.example.exp.travelgogui.components.TravelPackageDialogs.*;
+import static com.example.exp.travelgogui.travel_database_screen.components.TravelPackageDialogs.*;
 
 public class TravelDatabaseViewBuilder implements Builder<Region> {
     private final TravelDatabaseModel model;

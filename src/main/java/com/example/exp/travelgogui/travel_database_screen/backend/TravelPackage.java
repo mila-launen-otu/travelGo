@@ -1,4 +1,4 @@
-package com.example.exp.travelgogui.backend;
+package com.example.exp.travelgogui.travel_database_screen.backend;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 

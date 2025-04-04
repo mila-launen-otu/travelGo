@@ -1,8 +1,8 @@
-package com.example.exp.travelgogui;
+package com.example.exp.travelgogui.travel_database_screen;
 
-import com.example.exp.travelgogui.backend.TravelDatabase;
-import com.example.exp.travelgogui.backend.TravelPackage;
-import com.example.exp.travelgogui.backend.TravelPackageList;
+import com.example.exp.travelgogui.travel_database_screen.backend.TravelDatabase;
+import com.example.exp.travelgogui.travel_database_screen.backend.TravelPackage;
+import com.example.exp.travelgogui.travel_database_screen.backend.TravelPackageList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
