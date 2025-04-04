@@ -60,7 +60,6 @@ travelGo/
    cd backend && npm install
    cd ../frontend && npm install
    ```
-     ```
 3. **Run the application**
    ```sh
    # Start backend
