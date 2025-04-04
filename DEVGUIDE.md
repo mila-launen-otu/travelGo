@@ -55,20 +55,13 @@ travelGo/
    https://github.com/mila-launen-otu/travelGo.git
    cd travelGo
    ```
-2. **Install dependencies**
+2. **To Run Application**
    ```sh
-   cd backend && npm install
-   cd ../frontend && npm install
+   mvn javafx:run
    ```
-3. **Run the application**
+3. **To build and Executable**
    ```sh
-   # Start backend
-   cd backend
-   npm start
-   
-   # Start frontend
-   cd ../frontend
-   npm start
+   mvn javafx:jlink
    ```
 
 ## API Endpoints
