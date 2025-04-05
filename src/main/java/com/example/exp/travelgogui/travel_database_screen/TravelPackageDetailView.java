@@ -35,7 +35,7 @@ public class TravelPackageDetailView {
 
     Label descriptionValue = new Label(travelPackage.getDescription());
     descriptionValue.setWrapText(true);
-    descriptionValue.setStyle("-fx-font-size: 14;");
+    descriptionValue.setStyle("-fx-font-size: 14px 'System';");
 
     descriptionLabel.setMaxWidth(400);
     VBox descriptionSection = new VBox(5, descriptionLabel, descriptionValue);
@@ -88,7 +88,7 @@ public class TravelPackageDetailView {
     label.setStyle("-fx-font-weight: bold; -fx-font-size: 14;");
 
     Label value = new Label(valueText);
-    value.setStyle("-fx-font: 14;");
+    value.setStyle("-fx-font: 14px 'System';");
 
     HBox box = new HBox(5, label, value);
 
