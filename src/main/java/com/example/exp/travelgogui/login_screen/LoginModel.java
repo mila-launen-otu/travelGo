@@ -8,5 +8,5 @@ import javafx.beans.property.StringProperty;
 public class LoginModel {
     StringProperty userNameProperty = new SimpleStringProperty("");
     StringProperty passwordProperty = new SimpleStringProperty("");
-    BooleanProperty isLoggedIn = new SimpleBooleanProperty(false);
+    public BooleanProperty isLoggedIn = new SimpleBooleanProperty(false);
 }
