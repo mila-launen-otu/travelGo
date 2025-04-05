@@ -3,19 +3,20 @@ package unit;
 import com.example.exp.travelgogui.login_screen.backend.LoginCredentials;
 import com.example.exp.travelgogui.login_screen.backend.LoginCredentialsDatabase;
 import org.junit.jupiter.api.*;
+
 import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LoginCredentialsDatabaseTest {
-  private static final String TEST_FILE = "login_credentials.xml";
+  private static final String TEST_FILE = "test_login_credentials.xml";
   private LoginCredentialsDatabase db;
 
   @BeforeEach
   void setup() {
-    db = new LoginCredentialsDatabase();
-    new File(TEST_FILE).delete();
+    db = new LoginCredentialsDatabase(TEST_FILE); // new constructor with file path
+    new File(TEST_FILE).delete(); // delete only test file
   }
 
   @Test
@@ -35,6 +36,6 @@ public class LoginCredentialsDatabaseTest {
 
   @AfterEach
   void tearDown() {
-    new File(TEST_FILE).delete();
+    new File(TEST_FILE).delete(); // cleanup
   }
 }

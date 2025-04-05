@@ -4,15 +4,14 @@ import com.example.exp.travelgogui.travel_database_screen.TravelPackageDetailVie
 import com.example.exp.travelgogui.travel_database_screen.backend.TravelPackage;
 import javafx.application.Platform;
 import org.junit.jupiter.api.Test;
-
 import java.util.concurrent.CountDownLatch;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class TravelPackageImageFallbackTest {
 
   @Test
   void testFallbackImageLoadsWhenMissing() throws InterruptedException {
+    new javafx.embed.swing.JFXPanel(); // initializes the JavaFX runtime
     CountDownLatch latch = new CountDownLatch(1);
 
     assertDoesNotThrow(() -> {
