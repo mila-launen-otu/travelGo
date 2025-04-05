@@ -11,6 +11,10 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.util.Builder;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.scene.web.WebView;
 
 import static com.example.exp.travelgogui.travel_database_screen.components.TravelPackageDialogs.*;
 
@@ -67,15 +71,22 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
                     );
                 }
         );
+
         Button saveButton = new Button("Save Travel Packages");
         saveButton.setOnAction(
                 _-> onSave.run()
         );
+
+        // Help button
+        Button helpButton = new Button("Help");
+        helpButton.setOnAction(e -> showHelpWindow());
+
         HBox hBox = new HBox(
                 addButton,
                 removeButton,
                 updateButton,
-                saveButton
+                saveButton,
+                helpButton
         );
         hBox.setPadding(new Insets(5));
         hBox.setSpacing(25);
@@ -226,5 +237,100 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
 
         // Update the model with the filtered list
         model.setFilteredTravelPackageList(sortedList);
+    }
+
+    // Helper method to show the help window
+    private void showHelpWindow() {
+        // Create a new stage for the help window
+        Stage helpStage = new Stage();
+        helpStage.setTitle("Help & Documentation");
+
+        // Create a WebView to display the help content
+        WebView webView = new WebView();
+        String htmlContent = """
+            <html>
+            <head>
+                <style>
+                    body { font-family: sans-serif; padding: 20px; }
+                    h1, h2 { color: #2e6da4; }
+                    ul { margin-left: 20px; }
+                </style>
+            </head>
+            <body>
+                <h1>User Guide for Travel Package Management Application</h1>
+                <h2>Introduction</h2>
+                <p>Welcome to the Travel Package Management Application! This guide will walk you through the steps of using the application effectively, whether you are an Admin or a Normal User.</p>
+        
+                <h2>Getting Started</h2>
+                <ul>
+                    <li><b>Log In:</b> Upon launching the application, you will be prompted to log in.</li>
+                    <li><b>Select User Type:</b><br>
+                        <ul>
+                            <li><b>Admin:</b> Full permissions to edit, add, delete, and filter travel packages.</li>
+                            <li><b>Normal User:</b> Can filter available travel packages based on specific criteria.</li>
+                        </ul>
+                    </li>
+                </ul>
+        
+                <h2>Admin Features</h2>
+                <ul>
+                    <li><b>Editing a Travel Package:</b>
+                        <ol>
+                            <li>Click “Update Travel Package”.</li>
+                            <li>Select the package to edit.</li>
+                            <li>Edit the attributes and save changes.</li>
+                        </ol>
+                    </li>
+                    <li><b>Adding a Travel Package:</b>
+                        <ol>
+                            <li>Click “Add Travel Package”.</li>
+                            <li>Fill in details and click Save.</li>
+                        </ol>
+                    </li>
+                    <li><b>Deleting a Travel Package:</b>
+                        <ol>
+                            <li>Select a travel package.</li>
+                            <li>Click “Remove Selected Travel Package”.</li>
+                        </ol>
+                    </li>
+                </ul>
+        
+                <h2>Normal User & Developer Features</h2>
+                <p>Filter available travel packages:</p>
+                <ul>
+                    <li>Go to the filtering section (second header).</li>
+                    <li>Select:
+                        <ul>
+                            <li><b>Region</b></li>
+                            <li><b>Travel Type</b></li>
+                            <li><b>Price Range</b></li>
+                            <li><b>Stock Availability</b></li>
+                        </ul>
+                    </li>
+                    <li>Click <b>Filter</b> to see results.</li>
+                </ul>
+        
+                <h2>Conclusion</h2>
+                <p>This app helps Admins manage and Users find travel packages with ease. If you get stuck, come back to this guide. Happy browsing!</p>
+            </body>
+            </html>
+            """;
+
+        // Load the HTML content into the WebView
+        webView.getEngine().loadContent(htmlContent);
+
+        // Create a layout for the WebView
+        VBox layout = new VBox(webView);
+        VBox.setVgrow(webView, Priority.ALWAYS);
+
+        // Create a scene for the help window
+        Scene helpScene = new Scene(layout, 600, 500);
+        helpStage.setScene(helpScene);
+
+        // Set the modality of the help window to block input events to other windows
+        helpStage.initModality(Modality.APPLICATION_MODAL);
+
+        // Show the help window and wait for it to be closed before returning to the caller
+        helpStage.showAndWait();
     }
 }
