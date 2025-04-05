@@ -1,6 +1,5 @@
 module com.example.exp.travelgogui {
     requires javafx.fxml;
-
     requires org.kordamp.ikonli.javafx;
     requires com.fasterxml.jackson.dataformat.xml;
     requires com.dlsc.formsfx;
@@ -8,6 +7,7 @@ module com.example.exp.travelgogui {
     requires com.fasterxml.jackson.databind;
     requires com.ctc.wstx;
     requires java.desktop;
+    requires javafx.web;
 
     opens com.example.exp.travelgogui to javafx.fxml;
     exports com.example.exp.travelgogui;
