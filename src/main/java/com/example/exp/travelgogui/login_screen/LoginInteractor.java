@@ -1,5 +1,7 @@
 package com.example.exp.travelgogui.login_screen;
 
+import com.example.exp.travelgogui.login_screen.backend.LoginCredentials;
+import com.example.exp.travelgogui.login_screen.backend.LoginCredentialsDatabase;
 import javafx.concurrent.Task;
 
 public class LoginInteractor {
@@ -11,8 +13,17 @@ public class LoginInteractor {
     this.runExample = runExample;
   }
 
-  private Boolean checkLogin(String userName,String password){
-    return true;
+  private Boolean checkLogin(String userName, String password) {
+    try {
+      LoginCredentialsDatabase db = new LoginCredentialsDatabase(); // uses default file
+      LoginCredentials stored = db.loadLoginCredential();
+
+      return stored.getUsername().equals(userName) && stored.getPassword().equals(password);
+
+    } catch (Exception e) {
+      System.err.println("Login failed due to error: " + e.getMessage());
+      return false;
+    }
   }
 
   public void checkLoginTask (String userName,String password){
