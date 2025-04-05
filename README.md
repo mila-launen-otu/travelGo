@@ -164,6 +164,13 @@ This is already configured in the `<argLine>` of the `maven-surefire-plugin`.
 
 ## Developer Notes
 
+- Admin username + passwords are stored in `login_credentials.xml`, which must follow:
+  ```bash
+  <LoginCredentials>
+    <username>AdminUser</username>
+    <password>AdminUser123</password>
+  </LoginCredentials>
+  ```
 - Travel packages are stored in `travel_packages.xml`
 - Images are stored in the `src/main/resources/images/` directory
 - Travel packages are represented using `TravelPackage` and grouped in `TravelPackageList`
