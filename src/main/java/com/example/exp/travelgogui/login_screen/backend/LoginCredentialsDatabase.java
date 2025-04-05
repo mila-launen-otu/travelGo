@@ -7,35 +7,34 @@ import java.io.File;
 import java.io.IOException;
 
 public class LoginCredentialsDatabase {
-  private static final String FILE_PATH = "login_credentials.xml";
+  private final String filePath;
   private final XmlMapper xmlMapper;
 
   public LoginCredentialsDatabase() {
-    xmlMapper = new XmlMapper();
-    xmlMapper.enable(SerializationFeature.INDENT_OUTPUT); // Enable pretty-printing
+    this("login_credentials.xml"); // default
   }
 
-  // Save list of travel packages to XML
+  public LoginCredentialsDatabase(String filePath) {
+    this.filePath = filePath;
+    this.xmlMapper = new XmlMapper();
+    this.xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+  }
+
   public void saveLoginCredentials(LoginCredentials loginCredentials) throws IOException {
-    xmlMapper.writeValue(new File(FILE_PATH), loginCredentials);
+    xmlMapper.writeValue(new File(filePath), loginCredentials);
   }
 
-  // Load travel packages from XML
   public LoginCredentials loadLoginCredential() throws IOException {
-    if (!new File(FILE_PATH).exists()) {
-      // Write object directly to file
+    File file = new File(filePath);
+    if (!file.exists()) {
       System.out.println("File Not Found");
-      try {
-        xmlMapper.writeValue(new File(FILE_PATH), new LoginCredentials("AdminUser","AdminAccess123"));
-      } catch (Exception e) {
-        System.out.println("ExceptionThrown");
-        System.out.println(e.getMessage());
-        throw new RuntimeException(e);
-      }
+      LoginCredentials defaultCreds = new LoginCredentials("AdminUser", "AdminAccess123");
+      xmlMapper.writeValue(file, defaultCreds);
       System.out.println("File Created");
-      return new LoginCredentials("AdminUser","AdminAccess123");
+      return defaultCreds;
     }
-    return xmlMapper.readValue(new File(FILE_PATH), LoginCredentials.class);
+    return xmlMapper.readValue(file, LoginCredentials.class);
   }
 }
+
 
