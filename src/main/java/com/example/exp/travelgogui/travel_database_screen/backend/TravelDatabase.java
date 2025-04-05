@@ -7,24 +7,29 @@ import java.io.File;
 import java.io.IOException;
 
 public class TravelDatabase {
-    private static final String FILE_PATH = "travel_packages.xml";
     private final XmlMapper xmlMapper;
+    private final String filePath;
 
     public TravelDatabase() {
-        xmlMapper = new XmlMapper();
-        xmlMapper.enable(SerializationFeature.INDENT_OUTPUT); // Enable pretty-printing
+        this("travel_packages.xml"); // default path
     }
 
-    // Save list of travel packages to XML
+    public TravelDatabase(String filePath) {
+        this.filePath = filePath;
+        this.xmlMapper = new XmlMapper();
+        this.xmlMapper.enable(SerializationFeature.INDENT_OUTPUT);
+    }
+
     public void savePackages(TravelPackageList packageList) throws IOException {
-        xmlMapper.writeValue(new File(FILE_PATH), packageList);
+        xmlMapper.writeValue(new File(filePath), packageList);
     }
 
-    // Load travel packages from XML
     public TravelPackageList loadPackages() throws IOException {
-        if (!new File(FILE_PATH).exists()) {
+        File file = new File(filePath);
+        if (!file.exists()) {
             return new TravelPackageList();
         }
-        return xmlMapper.readValue(new File(FILE_PATH), TravelPackageList.class);
+        return xmlMapper.readValue(file, TravelPackageList.class);
     }
 }
+
