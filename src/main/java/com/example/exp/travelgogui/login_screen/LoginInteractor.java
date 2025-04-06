@@ -13,7 +13,7 @@ public class LoginInteractor {
     this.runExample = runExample;
   }
 
-  private Boolean checkLogin(String userName, String password) {
+  public Boolean checkLogin(String userName, String password) {
     try {
       LoginCredentialsDatabase db = new LoginCredentialsDatabase(); // uses default file
       LoginCredentials stored = db.loadLoginCredential();
@@ -35,8 +35,8 @@ public class LoginInteractor {
     };
 
     loginTask.setOnSucceeded(evt -> {
-      model.isLoggedIn.set(loginTask.getValue());
-      if (model.isLoggedIn.get()){
+      model.isAdmin.set(loginTask.getValue());
+      if (model.isAdmin.get()){
         runExample.run();
       }
       else{

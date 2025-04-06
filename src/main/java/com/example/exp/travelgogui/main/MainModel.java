@@ -22,8 +22,13 @@ public class MainModel {
     public BooleanProperty DatabaseSelectedSelectedProperty() {
         return databaseSelected;
     }
-    Runnable runExample = () -> {
+    Runnable logIn = () -> {
         loginSelected.setValue(false);
         databaseSelected.setValue(true);
+    };
+    Runnable logOut = () ->{
+        databaseSelected.setValue(false);
+        loginSelected.setValue(true);
+        isLoggedIn.setValue(false);
     };
 }

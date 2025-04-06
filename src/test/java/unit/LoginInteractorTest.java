@@ -72,7 +72,7 @@ class LoginInteractorTest {
     LoginInteractor interactor = new LoginInteractor(model, () -> ran[0] = true) {
       @Override
       public void checkLoginTask(String userName, String password) {
-        model.isLoggedIn.set(true); // Simulate successful login
+        model.isAdmin.set(true); // Simulate successful login
         runExample.run();           // Simulate post-login behavior
       }
     };
@@ -81,7 +81,7 @@ class LoginInteractorTest {
     interactor.checkLoginTask("admin", "password");
 
     // Assert
-    assertTrue(model.isLoggedIn.get(), "Login should set isLoggedIn to true");
+    assertTrue(model.isAdmin.get(), "Login should set isLoggedIn to true");
     assertTrue(ran[0], "Runnable should have been triggered on successful login");
   }
 }

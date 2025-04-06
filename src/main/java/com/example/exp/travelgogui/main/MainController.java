@@ -11,8 +11,8 @@ public class MainController {
     public MainController() {
         MainModel model = new MainModel();
         viewBuilder = new MainViewBuilder(model,
-                new LoginController(model.runExample,model.isLoggedIn).getView(),
-                new TravelDatabaseController(model.isLoggedIn).getView()
+                new LoginController(model.logIn,model.isLoggedIn).getView(),
+                new TravelDatabaseController(model.logOut,model.isLoggedIn).getView()
         );
     }
 

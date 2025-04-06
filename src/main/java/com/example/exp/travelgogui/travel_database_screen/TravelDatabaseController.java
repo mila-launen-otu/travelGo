@@ -8,11 +8,11 @@ public class TravelDatabaseController {
     private final Builder<Region> viewBuilder;
     private TravelDatabaseInteractor interactor;
 
-    public TravelDatabaseController(BooleanProperty isLoggedIn) {
+    public TravelDatabaseController(Runnable logOutofTravelDatabase, BooleanProperty isLoggedIn) {
         TravelDatabaseModel model = new TravelDatabaseModel();
         model.isLoggedIn.bind(isLoggedIn);
         interactor = new TravelDatabaseInteractor(model);
-        viewBuilder = new TravelDatabaseViewBuilder(model,interactor::writeTravelPackagesToDB);
+        viewBuilder = new TravelDatabaseViewBuilder(model,interactor::writeTravelPackagesToDB,logOutofTravelDatabase);
     }
 
     public Region getView() {

@@ -6,6 +6,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -21,11 +22,13 @@ import static com.example.exp.travelgogui.travel_database_screen.components.Trav
 public class TravelDatabaseViewBuilder implements Builder<Region> {
     private final TravelDatabaseModel model;
     private final Runnable onSave;
+    private final Runnable logOut;
     private final ListView<TravelPackage> listView = new ListView<>();
 
-    public TravelDatabaseViewBuilder(TravelDatabaseModel model,Runnable onSave) {
+    public TravelDatabaseViewBuilder(TravelDatabaseModel model,Runnable onSave,Runnable logOut) {
         this.model = model;
         this.onSave = onSave;
+        this.logOut = logOut;
         setInitalFilter();
     }
     private void setInitalFilter(){
@@ -197,14 +200,17 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
                 applyFilter(continentDropdown.getValue(), travelTypeDropdown.getValue(),
                     sortOptions.getValue(),toggleSort.isSelected())
         );
-
+        Button logOutButton = new Button("Log Out");
+        logOutButton.setOnAction(event -> logOut.run());
         // Add components to the filter bar
         filterNavigation.getChildren().addAll(
                 new Label("Continent: "), continentDropdown,
                 new Label("Travel Type: "), travelTypeDropdown,
                 new Label("Sort by: "), sortOptions,
                 new Label("Order: "), toggleSort,
-                filterButton
+                filterButton,
+                new Separator(Orientation.VERTICAL),
+                logOutButton
         );
 
         return filterNavigation;

@@ -63,31 +63,26 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- TestFX Core -->
+        <!-- TestFX -->
         <dependency>
             <groupId>org.testfx</groupId>
             <artifactId>testfx-core</artifactId>
-            <version>4.0.16-alpha</version>
+            <version>4.0.18</version>
             <scope>test</scope>
         </dependency>
-        <!-- TestFX with JUnit 5 -->
+        <!-- TestFX Junit5 Allows TestFX to work with Junit5 -->
         <dependency>
             <groupId>org.testfx</groupId>
             <artifactId>testfx-junit5</artifactId>
-            <version>4.0.16-alpha</version>
+            <version>4.0.18</version>
             <scope>test</scope>
         </dependency>
+        <!-- AssertJ for TestFX Asserts or you could use hamcrest instead -->
         <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>22.0.1</version>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.13.2</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>22.0.1</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>

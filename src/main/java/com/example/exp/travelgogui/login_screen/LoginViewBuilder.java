@@ -6,6 +6,8 @@ import com.dlsc.formsfx.model.structure.Group;
 import com.dlsc.formsfx.view.renderer.FormRenderer;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -32,9 +34,9 @@ public class LoginViewBuilder implements Builder<Region> {
     private Node adminLoginScreen(){
         Form loginForm = Form.of(
                 Group.of(
-                        Field.ofStringType(model.userNameProperty)
+                        Field.ofStringType(model.userName)
                                 .label("Username"),
-                        Field.ofStringType(model.passwordProperty)
+                        Field.ofStringType(model.password)
                                 .label("Password")
                                 .required("This field can’t be empty")
                 )
@@ -46,7 +48,14 @@ public class LoginViewBuilder implements Builder<Region> {
         });
         adminButton.setOnAction(evt->{
             loginForm.persist();
-            adminLogin.execute(model.userNameProperty.get(),model.passwordProperty.get());
+            adminLogin.execute(
+                () -> {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Login Error");
+                    alert.setHeaderText("Incorrect Username or Password");
+                    alert.setContentText("Please check your username and password and try again.");
+                    alert.showAndWait();
+                },model.userName.get(), model.password.get());
         });
         adminButton.setMaxWidth(500);
         guestButton.setMaxWidth(500);
