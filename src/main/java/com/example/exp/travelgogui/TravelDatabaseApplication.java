@@ -2,6 +2,8 @@ package com.example.exp.travelgogui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class TravelDatabaseApplication extends Application {
@@ -13,5 +15,14 @@ public class TravelDatabaseApplication extends Application {
     }
     public static void main(String[] args) {
         launch();
+    }
+    // scene object for unit tests
+    public static class ClickPane extends StackPane {
+        public ClickPane() {
+            super();
+            Button button = new Button("click me!");
+            button.setOnAction(actionEvent -> button.setText("clicked!"));
+            getChildren().add(new TravelDatabaseController().getView());
+        }
     }
 }
