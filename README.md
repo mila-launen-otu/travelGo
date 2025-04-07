@@ -29,6 +29,11 @@ Rubicon Systems is a **Travel Package Management System** designed to help admin
 
 ---
 
+## 🛡️ **How to Install and Run**
+(add this part)
+
+--
+
 ## ⚙️ **Project Requirements**
 - **Primary Language**: Java
 - **Data Storage**: CSV Files
