@@ -1,1 +1,52 @@
-<TravelPackages/>
+<TravelPackages>
+  <TravelPackage>
+    <name>Jamaica All Inclusive</name>
+    <description>An Amazing island getaway!</description>
+    <stock>5</stock>
+    <price>499.99</price>
+    <location>Kingston</location>
+    <travelType>Plane</travelType>
+    <continent>North America</continent>
+    <imageUrl>/Users/kleincafa/Year 2 (2024 - 2025)/Winter Semester 2025/CSCI 2040U - Software Design &amp; Analysis/travelGo (as of Mar. 28)/travelGo/src/main/resources/images/alex-azabache-V83v-MYB_Z8-unsplash.jpg</imageUrl>
+  </TravelPackage>
+  <TravelPackage>
+    <name>Japan Cherry Blossoms</name>
+    <description>Explore Japan in cherry blossom season!</description>
+    <stock>10</stock>
+    <price>1500.99</price>
+    <location>Tokyo</location>
+    <travelType>Plane</travelType>
+    <continent>Asia</continent>
+    <imageUrl>src/main/resources/images/default.jpg</imageUrl>
+  </TravelPackage>
+  <TravelPackage>
+    <name>New York Sight Seeing</name>
+    <description>See everything from Times Square to The Statue of Liberty!</description>
+    <stock>4</stock>
+    <price>1999.99</price>
+    <location>New York</location>
+    <travelType>Bus</travelType>
+    <continent>North America</continent>
+    <imageUrl>src/main/resources/images/default.jpg</imageUrl>
+  </TravelPackage>
+  <TravelPackage>
+    <name>3 Night Bahamas</name>
+    <description>Find every modern comfort!</description>
+    <stock>4</stock>
+    <price>221.0</price>
+    <location>Miami to Bahamas</location>
+    <travelType>Cruise</travelType>
+    <continent>North America</continent>
+    <imageUrl>src/main/resources/images/default.jpg</imageUrl>
+  </TravelPackage>
+  <TravelPackage>
+    <name>Los Angeles Tour</name>
+    <description>Visit sunny Los Angeles!</description>
+    <stock>40</stock>
+    <price>300.0</price>
+    <location>Los Angeles</location>
+    <travelType>Bus</travelType>
+    <continent>North America</continent>
+    <imageUrl>src/main/resources/images/marissa-grootes-TVllFyGaLEA-unsplash.jpg</imageUrl>
+  </TravelPackage>
+</TravelPackages>
