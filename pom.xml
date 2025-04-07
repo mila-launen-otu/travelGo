@@ -111,10 +111,11 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>com.example.exp.travelgogui.MainApplication</mainClass>
+                            <output>${project.build.directory}/app</output>
                             <modules>
                                 <module>javafx.controls</module>
                                 <module>javafx.fxml</module>
-                                <module>javafx.web</module> <!-- This is key -->
+                                <module>javafx.web</module>
                             </modules>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
@@ -123,6 +124,7 @@
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
                         </configuration>
+
                     </execution>
                 </executions>
             </plugin>

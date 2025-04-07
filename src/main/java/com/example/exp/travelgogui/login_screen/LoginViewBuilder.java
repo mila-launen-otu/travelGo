@@ -19,19 +19,40 @@ public class LoginViewBuilder implements Builder<Region> {
     private final LoginModel model;
     private final Runnable guestLogin;
     private final functionalInterface adminLogin;
-    public LoginViewBuilder(LoginModel model, Runnable runExample,functionalInterface functionalInterface) {
+
+    /**
+     * Constructor to initialize the LoginViewBuilder with the given parameters.
+     *
+     * @param model The LoginModel instance to be used.
+     * @param runExample Runnable to be executed on guest login.
+     * @param functionalInterface Functional interface to check admin login credentials.
+     */
+    public LoginViewBuilder(LoginModel model, Runnable runExample, functionalInterface functionalInterface) {
         this.model = model;
         guestLogin = runExample;
-        this.adminLogin=functionalInterface;
+        this.adminLogin = functionalInterface;
     }
+
+    /**
+     * Method to build the view.
+     *
+     * @return The built Region view.
+     */
     @Override
     public Region build() {
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(adminLoginScreen());
-        borderPane.setPrefSize(550,300);
+        borderPane.setPrefSize(550, 300);
         return borderPane;
     }
-    private Node adminLoginScreen(){
+
+    /**
+     * Method to create the admin login screen.
+     *
+     * @return The Node representing the admin login screen.
+     */
+    private Node adminLoginScreen() {
+        // Create a form with username and password fields
         Form loginForm = Form.of(
                 Group.of(
                         Field.ofStringType(model.userName)
@@ -41,11 +62,17 @@ public class LoginViewBuilder implements Builder<Region> {
                                 .required("This field can’t be empty")
                 )
         ).title("Login");
+
+        // Create buttons for admin login and guest login
         Button adminButton = new Button("Login as Admin");
         Button guestButton = new Button("Continue as Guest");
-        guestButton.setOnAction(evt->{
+
+        // Set action for guest login button
+        guestButton.setOnAction(evt -> {
             guestLogin.run();
         });
+
+        // Set action for admin login button
         adminButton.setOnAction(evt->{
             loginForm.persist();
             adminLogin.execute(
@@ -57,8 +84,11 @@ public class LoginViewBuilder implements Builder<Region> {
                     alert.showAndWait();
                 },model.userName.get(), model.password.get());
         });
+        // Set maximum width for buttons
         adminButton.setMaxWidth(500);
         guestButton.setMaxWidth(500);
+
+        // Create a VBox to hold the form and buttons
         VBox vbox = new VBox(
                 new Label("Login"),
                 new FormRenderer(loginForm),
@@ -67,6 +97,7 @@ public class LoginViewBuilder implements Builder<Region> {
         );
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(5);
+
         return vbox;
     }
 }

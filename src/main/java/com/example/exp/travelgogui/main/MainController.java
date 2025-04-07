@@ -8,14 +8,23 @@ import javafx.util.Builder;
 public class MainController {
     private final Builder<Region> viewBuilder;
 
+    /**
+     * Constructor to initialize the MainController.
+     * It sets up the view builder with the login and travel database views.
+     */
     public MainController() {
         MainModel model = new MainModel();
         viewBuilder = new MainViewBuilder(model,
-                new LoginController(model.logIn,model.isLoggedIn).getView(),
-                new TravelDatabaseController(model.logOut,model.isLoggedIn).getView()
+                new LoginController(model.logIn, model.isLoggedIn).getView(),
+                new TravelDatabaseController(model.logOut, model.isLoggedIn).getView()
         );
     }
 
+    /**
+     * Method to get the view built by the viewBuilder.
+     *
+     * @return The built Region view.
+     */
     public Region getView() {
         return viewBuilder.build();
     }

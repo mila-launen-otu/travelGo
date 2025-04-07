@@ -13,6 +13,11 @@ import java.io.File;
 import java.net.URL;
 
 public class TravelPackageDetailView {
+  /**
+   * Creates a new view for the given travel package.
+   *
+   * @param travelPackage The travel package to display.
+   */
   public static void newView(TravelPackage travelPackage) {
     Stage stage = new Stage();
     stage.setTitle(travelPackage.getName());
@@ -81,7 +86,13 @@ public class TravelPackageDetailView {
     stage.show();
   }
 
-  // Helper method to create a labeled value pair
+  /**
+   * Helper method to create a labeled value pair.
+   *
+   * @param labelText The text for the label.
+   * @param valueText The text for the value.
+   * @return The HBox containing the labeled value pair.
+   */
   private static HBox labeledValue(String labelText, String valueText) {
     Label label = new Label(labelText);
     label.setStyle("-fx-font-weight: bold; -fx-font-size: 14;");

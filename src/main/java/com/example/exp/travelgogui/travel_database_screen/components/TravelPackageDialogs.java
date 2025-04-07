@@ -14,6 +14,11 @@ import javafx.stage.FileChooser;
 import java.io.File;
 
 public class TravelPackageDialogs {
+    /**
+     * Creates a dialog for adding a new travel package.
+     *
+     * @return The dialog for adding a new travel package.
+     */
     static public Dialog<TravelPackage> AddTravelPackageDialog() {
         // Initialize properties for the travel package fields
         StringProperty nameProperty = new SimpleStringProperty("");
@@ -121,6 +126,12 @@ public class TravelPackageDialogs {
         return dialog;
     }
 
+    /**
+     * Creates a dialog for updating an existing travel package.
+     *
+     * @param travelPackage The travel package to be updated.
+     * @return The dialog for updating the travel package.
+     */
     static public Dialog<TravelPackage> UpdateTravelPackageDialog(TravelPackage travelPackage) {
         // Initialize properties with the current travel package values
         Dialog<TravelPackage> dialog = new Dialog<>();
