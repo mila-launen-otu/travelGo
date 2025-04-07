@@ -12,12 +12,12 @@ public class LoginController {
     private Runnable logIn;
 
 
-    public LoginController(Runnable runExample, BooleanProperty isLoggedIn) {
+    public LoginController(Runnable logIn, BooleanProperty isLoggedIn) {
         this.logIn = logIn;
         model = new LoginModel();
-        interactor = new LoginInteractor(model,runExample);
+        interactor = new LoginInteractor(model,logIn);
         viewBuilder = new LoginViewBuilder(model,
-            runExample,
+            logIn,
             this::checkLogin
         );
         model.isAdmin.bindBidirectional(isLoggedIn);
