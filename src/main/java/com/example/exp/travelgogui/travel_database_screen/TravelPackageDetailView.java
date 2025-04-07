@@ -50,7 +50,7 @@ public class TravelPackageDetailView {
 
     try {
       // Try to load the image from the specified URL
-      File imageFile = new File(System.getProperty("user.dir"), travelPackage.getImageUrl());
+      File imageFile = new File(travelPackage.getImageUrl());
       if (imageFile.exists()) {
         image = new Image(imageFile.toURI().toString());
       } else {
@@ -59,7 +59,6 @@ public class TravelPackageDetailView {
     } catch (Exception e) {
       // Fallback to a default image if the specified image is not found
       URL fallbackURL = TravelPackageDetailView.class.getResource("/images/default.jpg");
-
       if (fallbackURL != null) {
         image = new Image(fallbackURL.toExternalForm());
       } else {
