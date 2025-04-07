@@ -96,6 +96,7 @@ public class TravelPackageDialogs {
 
         // Add buttons to the dialog
         dialogPane.getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+        dialogPane.setPrefSize(800, 600);
         dialog.setDialogPane(dialogPane);
 
         // Set the result converter to create a TravelPackage object when OK is clicked
@@ -200,6 +201,7 @@ public class TravelPackageDialogs {
 
         // Add buttons to the dialog
         dialogPane.getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+        dialogPane.setPrefSize(800, 600);
         dialog.setDialogPane(dialogPane);
 
         // Set the result converter to update the TravelPackage object when OK is clicked
