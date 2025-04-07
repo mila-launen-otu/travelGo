@@ -1,26 +1,35 @@
-# **Rubicon Systems - Travel Package Management**
+# 🏛️ Rubicon Systems – Travel Package Management
 
-## **Project Overview**
+> *“Alea iacta est.”* – *The die is cast.*  
+Just like Caesar crossing the Rubicon, this project marks a point of no return in efficient travel management.
+
+---
+
+## 📜 **Project Overview**
 Rubicon Systems is a **Travel Package Management System** designed to help administrators **organize, track, and modify travel packages efficiently**. The platform ensures seamless management of travel offerings, including inventory and pricing adjustments.
 
-### **Key Features**
+---
+
+### ⚔️ **Key Features**
 - **Add, Edit, or Delete Travel Packages**: Manage package details such as title, description, price, and stock availability.
 - **Real-Time Stock Tracking**: Monitor available stock for each package.
+- **Detailed View**: Click on any travel package and get a full view, including a photo.
 - **Advanced Sorting & Filtering**: Quickly find packages based on criteria like price, destination, and availability.
 - **Admin Login System**: Secure access to system functionalities.
 
 ---
 
-## **How to Use**
+## 🧭 **How to Use**
 1. **Add Travel Packages**: Input essential details like title, description, price, and stock.
 2. **Modify Stock**: Adjust stock quantities as needed for each package.
 3. **Edit Packages**: Update existing package information when required.
 4. **Delete Packages**: Remove discontinued or outdated packages.
 5. **Sort & Filter**: Utilize sorting and filtering options to easily navigate available packages.
+6. **Admin Login** – Authenticate to unlock the full suite of management features.
 
 ---
 
-## **Project Requirements**
+## ⚙️ **Project Requirements**
 - **Primary Language**: Java
 - **Data Storage**: CSV Files
 - **Version Control**: Git + GitHub
@@ -28,7 +37,7 @@ Rubicon Systems is a **Travel Package Management System** designed to help admin
 
 ---
 
-## **Development Progress**
+## 🗓️ **Development Timeline**
 ### **Week 1:**
 - [x] Add Travel Packages
 - [x] View Travel Packages
@@ -37,19 +46,19 @@ Rubicon Systems is a **Travel Package Management System** designed to help admin
 ### **Week 2:**
 - [x] Delete Travel Packages
 - [x] Edit Travel Packages
-- [ ] Sorting & Filtering
+- [X] Sorting & Filtering
 
 ### **Week 3:**
-- [ ] UI Enhancements
-- [ ] System Testing
-- [ ] Admin Login
+- [X] UI Enhancements
+- [X] System Testing
+- [X] Admin Login
 
-**Check out the full project tasks here:**  
-[Project Tasks Document](https://docs.google.com/document/d/1bNOieihMCGUcXW06Y7ec1a0M1JouxbGHAMaItOKCehM/edit?usp=sharing)
+📜 **Project Taskboard**  
+(https://github.com/users/KendraP5/projects/2)
 
 ---
 
-## **Team Members**
+## 🛡️ **Team Members**
 - **Project Manager**: Mila Launen
 - **Technical Manager**: Kendra Peace
 - **Front-End Lead**: Keifer Young
@@ -58,22 +67,14 @@ Rubicon Systems is a **Travel Package Management System** designed to help admin
 
 ---
 
-## **Known Risks & Challenges**
+## ⚠️ **Known Risks & Challenges**
 - **Data Accuracy**: Implementing efficient stock updates.
 - **Security Concerns**: Ensuring safe admin access and data protection.
 - **Performance Optimization**: Enhancing sorting and filtering speed.
 
 ---
 
-## **Next Steps**
-- Complete **sorting & filtering** functionalities.
-- Finalize **admin login** features.
-- Improve **UI** and **system stability**.
+## 🏛️ Final Product: **TravelGo**
+A decisive step forward in travel management by **Rubicon Systems**—where bold ideas become reality.
 
 ---
-
-# **TravelGo**
-**Final Program for Organization**
-
-Here’s the link to all of the organized project tasks we need to complete:  
-[Project Tasks Document](https://docs.google.com/document/d/1bNOieihMCGUcXW06Y7ec1a0M1JouxbGHAMaItOKCehM/edit?usp=sharing)
