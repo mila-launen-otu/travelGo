@@ -26,13 +26,13 @@ public class TravelPackageDialogs {
         // Properties for Combo Boxes
         ObjectProperty<String> continentProperty = new SimpleObjectProperty<>();
         ObservableList<String> continentObservableList = FXCollections.observableArrayList(
-                "Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America"
+            "Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America"
         );
         ListProperty<String> continentList = new SimpleListProperty<>(continentObservableList);
 
         ObjectProperty<String> travelTypeProperty = new SimpleObjectProperty<>();
         ObservableList<String> travelTypeObservableList = FXCollections.observableArrayList(
-                "Cruise", "Plane", "Train", "Bus", "Ferry"
+            "Cruise", "Plane", "Train", "Bus", "Ferry"
         );
         ListProperty<String> travelTypeList = new SimpleListProperty<>(travelTypeObservableList);
 
@@ -135,13 +135,13 @@ public class TravelPackageDialogs {
         // Properties for Combo Boxes
         ObjectProperty<String> continentProperty = new SimpleObjectProperty<>(travelPackage.getContinent());
         ObservableList<String> continentObservableList = FXCollections.observableArrayList(
-                "Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America"
+            "Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America"
         );
         ListProperty<String> continentList = new SimpleListProperty<>(continentObservableList);
 
         ObjectProperty<String> travelTypeProperty = new SimpleObjectProperty<>(travelPackage.getTravelType());
         ObservableList<String> travelTypeObservableList = FXCollections.observableArrayList(
-                "Cruise", "Flight", "Train", "Bus", "Ferry"
+            "Cruise", "Plane", "Train", "Bus", "Ferry"
         );
         ListProperty<String> travelTypeList = new SimpleListProperty<>(travelTypeObservableList);
 
