@@ -25,16 +25,32 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
     private final Runnable logOut;
     private final ListView<TravelPackage> listView = new ListView<>();
 
+    /**
+     * Constructor to initialize the TravelDatabaseViewBuilder with the given parameters.
+     *
+     * @param model The TravelDatabaseModel to be used by the view builder.
+     * @param onSave A Runnable to handle saving travel packages.
+     * @param logOut A Runnable to handle logging out of the travel database.
+     */
     public TravelDatabaseViewBuilder(TravelDatabaseModel model,Runnable onSave,Runnable logOut) {
         this.model = model;
         this.onSave = onSave;
         this.logOut = logOut;
         setInitalFilter();
     }
+
+    /**
+     * Sets the initial filter for the travel packages.
+     */
     private void setInitalFilter(){
         applyFilter("All", "All","None",true);
     }
 
+    /**
+     * Builds the main view for the travel database.
+     *
+     * @return The built Region view.
+     */
     @Override
     public Region build() {
         BorderPane borderPane = new BorderPane();
@@ -46,6 +62,12 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         borderPane.setCenter(travelPackagesBox());
         return borderPane;
     }
+
+    /**
+     * Creates the admin bar with buttons for managing travel packages.
+     *
+     * @return The admin bar Node.
+     */
     private Node adminBar(){
         Button removeButton = new Button("Remove Selected Travel Package");
         removeButton.setOnAction(_ ->
@@ -96,6 +118,11 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         return hBox;
     }
 
+    /**
+     * Creates the travel packages box with a ListView.
+     *
+     * @return The travel packages box Node.
+     */
     private Node travelPackagesBox() {
         // Set the cell factory for the ListView to use custom cells
         listView.setCellFactory(travelPackage -> createCell());
@@ -115,6 +142,11 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         return listView;
     }
 
+    /**
+     * Creates a custom ListCell for TravelPackages.
+     *
+     * @return The custom ListCell.
+     */
     // Custom ListCell for TravelPackages
     private ListCell<TravelPackage> createCell() {
         ListCell<TravelPackage> cell = new ListCell<>() {
@@ -159,6 +191,11 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         return cell;
     }
 
+    /**
+     * Creates the filter bar with dropdowns and buttons for filtering travel packages.
+     *
+     * @return The filter bar Node.
+     */
     private Node createFilterBar() {
         HBox filterNavigation = new HBox();
         filterNavigation.setSpacing(10);
@@ -216,6 +253,14 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         return filterNavigation;
     }
 
+    /**
+     * Applies the filter to the travel packages based on the selected criteria.
+     *
+     * @param continent The selected continent.
+     * @param travelType The selected travel type.
+     * @param sortingType The selected sorting type.
+     * @param isAscending Whether the sorting is in ascending order.
+     */
     private void applyFilter(String continent, String travelType,
         String sortingType,Boolean isAscending) {
         ObservableList<TravelPackage> fullList = model.getTravelPackageList();
@@ -245,6 +290,9 @@ public class TravelDatabaseViewBuilder implements Builder<Region> {
         model.setFilteredTravelPackageList(sortedList);
     }
 
+    /**
+     * Helper method to show the help window.
+     */
     // Helper method to show the help window
     private void showHelpWindow() {
         // Create a new stage for the help window

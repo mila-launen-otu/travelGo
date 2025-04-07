@@ -11,10 +11,20 @@ import java.io.IOException;
 public class TravelDatabaseInteractor {
     private final TravelDatabaseModel model;
     private final TravelDatabase database = new TravelDatabase();
+
+    /**
+     * Constructor to initialize the TravelDatabaseInteractor with the given model.
+     *
+     * @param model The TravelDatabaseModel to be used by the interactor.
+     */
     public TravelDatabaseInteractor(TravelDatabaseModel model) {
         this.model = model;
         loadTravelPackagesFromDB();
     }
+
+    /**
+     * Method to load travel packages from the database and update the model.
+     */
     public void loadTravelPackagesFromDB() {
         ObservableList<TravelPackage> list1;
         try {
@@ -24,6 +34,10 @@ public class TravelDatabaseInteractor {
         }
         model.setTravelPackageList(list1);
     }
+
+    /**
+     * Method to save travel packages from the model to the database.
+     */
     public void writeTravelPackagesToDB(){
         TravelPackageList travelPackageList = new TravelPackageList();
         travelPackageList.setPackages(model.getTravelPackageList());
