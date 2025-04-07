@@ -32,7 +32,7 @@ public class AdminFilterAndSelectTest extends ApplicationTest {
 
         model.setTravelPackageList(packages);
         Runnable onSave = () -> {};
-        Region view = new TravelDatabaseViewBuilder(model, onSave).build();
+        Region view = new TravelDatabaseViewBuilder(model, onSave,onSave).build();
 
         javafx.scene.Scene scene = new javafx.scene.Scene(view);
         stage.setScene(scene);

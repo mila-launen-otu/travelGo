@@ -28,7 +28,7 @@ class TravelAppSystemTest extends ApplicationTest {
     testModel.setTravelPackageList(list);
     Runnable testOnSave = () -> {};
 
-    javafx.scene.Scene scene = new javafx.scene.Scene(new TravelDatabaseViewBuilder(testModel, testOnSave).build());
+    javafx.scene.Scene scene = new javafx.scene.Scene(new TravelDatabaseViewBuilder(testModel, testOnSave,testOnSave).build());
     stage.setScene(scene);
     stage.show();
   }
